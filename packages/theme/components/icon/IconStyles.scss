@@ -1,0 +1,5 @@
+@use "../../mixins/index" as *;
+
+@mixin icon-style($color) {
+  color: $color;
+}

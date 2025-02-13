@@ -1,0 +1,74 @@
+@use "../../mixins/index" as *;
+
+@include b(button-group) {
+  display: inline-flex;
+  border-radius: $xy-border-radius-base;
+
+  & > * {
+    flex-shrink: 0;
+    margin-left: initial !important;
+    border-radius: $xy-button-group-border-radius-base;
+    // border-left-width: 0 !important;
+
+    &:first-child {
+      border-top-left-radius: $xy-border-radius-base;
+      border-bottom-left-radius: $xy-border-radius-base;
+      border-left-width: 1px !important;
+    }
+
+    &:last-child {
+      border-top-right-radius: $xy-border-radius-base;
+      border-bottom-right-radius: $xy-border-radius-base;
+    }
+
+    @include when(round) {
+      border-radius: $xy-button-group-border-radius-base;
+
+      &:first-child {
+        border-top-left-radius: $xy-border-radius-round-base;
+        border-bottom-left-radius: $xy-border-radius-round-base;
+      }
+
+      &:last-child {
+        border-top-right-radius: $xy-border-radius-round-base;
+        border-bottom-right-radius: $xy-border-radius-round-base;
+      }
+    }
+  }
+
+  @include when(vertical) {
+    flex-flow: column;
+
+    & > * {
+      border-left-width: 1px !important;
+      border-radius: $xy-button-group-border-radius-base;
+      // border-top-width: 0;
+
+      &:first-child {
+        border-top-left-radius: $xy-border-radius-base;
+        border-top-right-radius: $xy-border-radius-base;
+        border-top-width: 1px;
+      }
+
+      &:last-child {
+        border-bottom-left-radius: $xy-border-radius-base;
+        border-bottom-right-radius: $xy-border-radius-base;
+      }
+
+      @include when(round) {
+        border-radius: $xy-button-group-border-radius-base;
+        padding: 0 20px;
+
+        &:first-child {
+          border-top-left-radius: $xy-border-radius-vertical-round-base;
+          border-top-right-radius: $xy-border-radius-vertical-round-base;
+        }
+
+        &:last-child {
+          border-bottom-left-radius: $xy-border-radius-vertical-round-base;
+          border-bottom-right-radius: $xy-border-radius-vertical-round-base;
+        }
+      }
+    }
+  }
+}

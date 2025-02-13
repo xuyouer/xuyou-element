@@ -1,0 +1,108 @@
+@use "colors" as *;
+@forward "colors";
+@use "sass:color";
+@use "sass:map";
+@use "sass:math";
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  // -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  -webkit-tap-highlight-color: transparent;
+}
+
+:root {
+  --xy-primary-color: var(--primary);
+  --xy-success-color: var(--success);
+  --xy-warning-color: var(--warning);
+  --xy-danger-color: var(--danger);
+  --xy-info-color: var(--info);
+  --xy-default-color: var(--secondary);
+}
+
+$xy-primary-color: $primary;
+$xy-success-color: $success;
+$xy-warning-color: $warning;
+$xy-danger-color: $danger;
+$xy-info-color: $info;
+$xy-default-color: $secondary;
+
+$xy-colors: (
+  primary: $xy-primary-color,
+  success: $xy-success-color,
+  warning: $xy-warning-color,
+  danger: $xy-danger-color,
+  info: $xy-info-color,
+  default: $xy-default-color,
+);
+
+
+/* @function generate-color-shades($color, $steps: 10, $step-size: 4%) {
+  @return map.merge(
+        (),
+      (
+        dark-10: color.adjust($color, $lightness: -$step-size * 10),
+        dark-9: color.adjust($color, $lightness: -$step-size * 9),
+        dark-8: color.adjust($color, $lightness: -$step-size * 8),
+        dark-7: color.adjust($color, $lightness: -$step-size * 7),
+        dark-6: color.adjust($color, $lightness: -$step-size * 6),
+        dark-5: color.adjust($color, $lightness: -$step-size * 5),
+        dark-4: color.adjust($color, $lightness: -$step-size * 4),
+        dark-3: color.adjust($color, $lightness: -$step-size * 3),
+        dark-2: color.adjust($color, $lightness: -$step-size * 2),
+        dark-1: color.adjust($color, $lightness: -$step-size),
+        light-1: color.adjust($color, $lightness: $step-size),
+        light-2: color.adjust($color, $lightness: $step-size * 2),
+        light-3: color.adjust($color, $lightness: $step-size * 3),
+        light-4: color.adjust($color, $lightness: $step-size * 4),
+        light-5: color.adjust($color, $lightness: $step-size * 5),
+        light-6: color.adjust($color, $lightness: $step-size * 6),
+        light-7: color.adjust($color, $lightness: $step-size * 7),
+        light-8: color.adjust($color, $lightness: $step-size * 8),
+        light-9: color.adjust($color, $lightness: $step-size * 9),
+        light-10: color.adjust($color, $lightness: $step-size * 10)
+      )
+  );
+} */
+
+@function generate-color-shades($color, $steps: 10, $step-size: 4%) {
+  @if ($steps * $step-size > 42%) {
+    $step-size: 42% / $steps;
+  }
+  $shades: ();
+  @for $i from 1 through $steps {
+    $shades: map.merge(
+        $shades,
+        (
+          dark-#{$i}: color.adjust($color, $lightness: -$step-size * $i),
+          light-#{$i}: color.adjust($color, $lightness: $step-size * $i),
+        )
+    );
+  }
+  @return $shades;
+}
+
+// map.get($xy-primary-colors, 'dark-2')
+$xy-primary-colors: generate-color-shades($xy-primary-color);
+$xy-success-colors: generate-color-shades($xy-success-color);
+$xy-warning-colors: generate-color-shades($xy-warning-color);
+$xy-danger-colors: generate-color-shades($xy-danger-color);
+$xy-info-colors: generate-color-shades($xy-info-color);
+$xy-default-colors: generate-color-shades($xy-default-color);
+
+// var(--xy-primary-color-dark-2)
+:root {
+  @each $color-group, $color-map in (
+    'primary': $xy-primary-colors,
+    'success': $xy-success-colors,
+    'warning': $xy-warning-colors,
+    'danger': $xy-danger-colors,
+    'info': $xy-info-colors,
+    'default': $xy-default-colors,
+  ) {
+    @each $shade, $color in $color-map {
+      --xy-#{$color-group}-color-#{$shade}: #{$color};
+    }
+  }
+}

@@ -1,0 +1,49 @@
+@use "../../mixins/index" as *;
+@use "sass:map";
+
+@include b(divider) {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  vertical-align: middle;
+  color: $xy-default-color;
+  font-size: $xy-font-size-14;
+  height: 1px;
+  margin: calc($xy-height-25 - 1px) 0;
+  border: 1px var(--xy-divider-border-style) $xy-default-color;
+  border-width: 1px 0 0;
+
+  --xy-divider-border-style: solid;
+
+  @include e(content) {
+    display: inline-flex;
+    height: $xy-height-20;
+    background: white;
+    padding: $xy-padding-0-20;
+  }
+
+  @include when(left) {
+    justify-content: flex-start;
+
+    & > * {
+      margin: $xy-margin-0-20;
+    }
+  }
+
+  @include when(right) {
+    justify-content: flex-end;
+
+    & > * {
+      margin: $xy-margin-0-20;
+    }
+  }
+
+  @include m(vertical) {
+    display: inline-block;
+    width: 1px;
+    height: 1em;
+    margin: $xy-margin-0-8;
+    border-width: 0 0 0 1px;
+  }
+}

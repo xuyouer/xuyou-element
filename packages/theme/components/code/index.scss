@@ -1,0 +1,185 @@
+@use "../../mixins/index" as *;
+@use "sass:map";
+
+@include b(code) {
+  display: flex;
+  flex-flow: column;
+  border: $xy-border-base;
+  border-radius: $xy-border-radius-6;
+  overflow: hidden;
+  width: 100%;
+  max-width: 100%;
+  background: white;
+
+  @include m(dark) {
+    background: $dark;
+    color: $light;
+  }
+
+  @include bx(showcase) {
+    border-bottom: $xy-border-base;
+    padding: $xy-padding-20;
+    display: flex;
+    flex-flow: column;
+    position: relative;
+
+    @include m(dark) {
+      border-bottom-color: $gray;
+    }
+
+    @include bx(btn) {
+      cursor: pointer;
+      display: flex;
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: transparent;
+
+      & > * {
+        flex-grow: 1;
+        background: inherit !important;
+
+        & > * {
+          margin-right: initial !important;
+        }
+      }
+    }
+
+    @include bx(pre) {
+      width: 100%;
+      margin: initial;
+      display: inline-flex;
+      font-size: $xy-font-size-16;
+      max-height: 200px;
+      overflow: hidden;
+
+      @include when(showcased) {
+        max-height: fit-content;
+      }
+
+      @include bx(code) {
+        width: inherit;
+        flex-grow: 1;
+        overflow-x: auto;
+        line-height: $xy-line-height-2;
+
+        &::-webkit-scrollbar {
+          display: none;
+        }
+
+        @include when(wrap) {
+          overflow-x: initial;
+          white-space: pre-wrap;
+        }
+      }
+    }
+  }
+
+  @include bx(options) {
+    padding: $xy-padding-8;
+    display: inline-flex;
+    justify-content: end;
+    font-size: $xy-font-size-12;
+  }
+
+  @include bx(source) {
+    position: relative;
+    background: #f5f7fa;
+    background: $light;
+    display: inline-flex;
+
+    @include m(dark) {
+      color: $dark;
+      background: white;
+    }
+  }
+
+  @include bx(lang) {
+    position: absolute;
+    line-height: 1;
+    top: 8px;
+    right: 10px;
+    z-index: 2;
+    color: $xy-default-color;
+    font-size: $xy-font-size-12;
+  }
+
+  @include bx(pre) {
+    width: 100%;
+    margin: initial;
+    padding: $xy-padding-20-0;
+    padding-bottom: $xy-padding-40;
+    display: inline-flex;
+    font-size: $xy-font-size-14;
+
+    @include bx(code) {
+      width: inherit;
+      flex-grow: 1;
+      padding: $xy-padding-0-20;
+      display: inline-flex;
+
+      @include bx(item) {
+        width: inherit;
+        flex-grow: 1;
+        display: inline-flex;
+        flex-flow: column;
+        overflow-x: auto;
+
+        &::-webkit-scrollbar {
+          display: none;
+        }
+
+        @include when(wrap) {
+          overflow-x: initial;
+        }
+
+        @include when(gridlines) {
+          // background: conic-gradient(from 270deg at 4px .8px, rgba(73, 87, 112, .2) 90deg, transparent 0deg);
+          background: conic-gradient(from 90deg at 4px calc(100% - .8px), rgba(73, 87, 112, .2) 90deg, transparent 0deg);
+          background-size: 10px 2em;
+        }
+
+        @include bx(list) {
+          display: inline-flex;
+          line-height: $xy-line-height-2;
+
+          @include bx(numbers) {
+            color: rgba(73, 87, 112, .2);
+            user-select: none;
+            min-width: 35px;
+          }
+
+          @include bx(code) {
+            width: calc(100% - 35px);
+
+            @include when(wrap) {
+              white-space: pre-wrap;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  @include bx(collapse) {
+    border-top: $xy-border-base;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    & > * {
+      flex-grow: 1;
+      height: 100%;
+
+      &:hover {
+        background: transparent !important;
+      }
+    }
+
+    @include m(dark) {
+      border-top-color: $gray;
+    }
+  }
+}

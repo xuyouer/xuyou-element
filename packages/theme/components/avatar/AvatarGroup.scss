@@ -1,0 +1,30 @@
+@use "../../mixins/index" as *;
+
+@include b(avatar-group) {
+  display: inline-flex;
+  vertical-align: middle;
+
+  --xy-avatar-group-spacing: inherit;
+
+  & > * {
+    flex-shrink: 0;
+  }
+  & > * + * {
+    margin-left: var(--xy-avatar-group-spacing);
+  }
+
+  @include when(vertical) {
+    flex-direction: column;
+
+    & > * + * {
+      margin-left: initial;
+      margin-top: var(--xy-avatar-group-spacing);
+    }
+  }
+  @include when(hidden) {
+    overflow-x: hidden;
+  }
+  @include when(visible) {
+    overflow-x: auto;
+  }
+}

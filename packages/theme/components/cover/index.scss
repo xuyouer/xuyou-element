@@ -1,0 +1,150 @@
+@use "../../mixins/index" as *;
+@use "sass:map";
+@use "sass:color";
+
+@include b(cover) {
+  display: inline-flex;
+  vertical-align: middle;
+  object-fit: cover;
+  width: var(--xy-cover-width);
+  height: var(--xy-cover-height);
+  border-radius: $xy-border-radius-6;
+  font-size: $xy-font-size-14;
+  overflow: hidden;
+  position: relative;
+
+  --xy-cover-width: inherit;
+  --xy-cover-height: inherit;
+  --xy-cover-title-color: rgba(0, 0, 0, .8);
+  --xy-cover-subtitle-color: rgba(0, 0, 0, .7);
+
+  & > img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  @include when(bordered) {
+    border: $xy-border-base;
+  }
+
+  @include when(outlined) {
+    outline: $xy-outline-base;
+    outline-offset: $xy-outline-offset;
+  }
+
+  @include bx(info) {
+    flex-grow: 1;
+    display: flex;
+    flex-flow: column;
+    align-items: flex-start;
+    justify-content: flex-end;
+    padding: $xy-padding-10;
+    position: absolute;
+    z-index: 2;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    & > * {
+      padding: $xy-padding-2-5;
+      line-height: $xy-line-height-1_2;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+    }
+
+    @include e(title) {
+      font-size: $xy-font-size-14;
+      color: var(--xy-cover-title-color);
+    }
+    @include e(subtitle) {
+      font-size: $xy-font-size-10;
+      color: var(--xy-cover-subtitle-color);
+      -webkit-line-clamp: 1;
+    }
+
+    @include when(mask, feather) {
+      --xy-cover-title-color: rgba(255, 255, 255, .8);
+      --xy-cover-subtitle-color: rgba(255, 255, 255, .7);
+    }
+    @include when(mask) {
+      border-image: linear-gradient(#0003, #000) fill 0;
+
+      & > *:first-child {
+        color: var(--xy-cover-title-color);
+      }
+      & > *:last-child {
+        color: var(--xy-cover-subtitle-color);
+      }
+    }
+    @include when(feather) {
+      & > * {
+        mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100%25' height='100%25'%3E%3Crect width='100%25' height='100%25' rx='10' ry='10' fill='black' /%3E%3C/svg%3E");
+        filter: drop-shadow(0 0 5px #000) drop-shadow(0 0 10px #000) drop-shadow(0 0 15px #000);
+      }
+      & > *:first-child {
+        color: var(--xy-cover-title-color);
+      }
+      & > *:last-child {
+        color: var(--xy-cover-subtitle-color);
+      }
+    }
+
+    @include when(top) {
+      align-items: center;
+      justify-content: flex-start;
+    }
+    @include when(top-start) {
+      align-items: flex-start;
+      justify-content: flex-start;
+    }
+    @include when(top-end) {
+      align-items: flex-end;
+      justify-content: flex-start;
+    }
+    @include when(bottom) {
+      align-items: center;
+      justify-content: flex-end;
+    }
+    @include when(bottom-start) {
+      align-items: flex-start;
+      justify-content: flex-end;
+    }
+    @include when(bottom-end) {
+      align-items: flex-end;
+      justify-content: flex-end;
+    }
+    @include when(left) {
+      align-items: flex-start;
+      justify-content: center;
+    }
+    @include when(left-start) {
+      align-items: flex-start;
+      justify-content: flex-start;
+    }
+    @include when(left-end) {
+      align-items: flex-start;
+      justify-content: flex-end;
+    }
+    @include when(right) {
+      align-items: flex-end;
+      justify-content: center;
+    }
+    @include when(right-start) {
+      align-items: flex-end;
+      justify-content: flex-start;
+    }
+    @include when(right-end) {
+      align-items: flex-end;
+      justify-content: flex-end;
+    }
+    @include when(center) {
+      align-items: center;
+      justify-content: center;
+    }
+  }
+}

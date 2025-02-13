@@ -1,0 +1,81 @@
+@use "../../mixins/index" as *;
+@use "sass:map";
+
+@include b(card) {
+  display: inline-flex;
+  vertical-align: middle;
+  flex-flow: column;
+  border-radius: $xy-border-radius-6;
+  font-size: $xy-font-size-16;
+  background-color: var(--xy-card-color);
+  box-shadow: none;
+  transition: box-shadow .3s;
+  position: relative;
+  overflow: hidden;
+
+  --xy-card-color: inherit;
+  --xy-card-fill-color: inherit;
+
+  &:not(.is-bordered) {
+    & > *:not(:first-child) {
+      padding-top: initial;
+    }
+  }
+  & > *:first-child {
+    border-top: initial;
+  }
+
+  @include when(contentShadow) {
+    filter: url("#content-shadow-filter");
+  }
+
+  @include when(bordered) {
+    border: $xy-border-base;
+  }
+
+  @include when(block) {
+    display: flex;
+    width: 100%;
+  }
+
+  @include when(hover) {
+    &:not(.is-always):hover {
+      box-shadow: 0 2px 16px rgba(0, 0, 0, 0.15);
+    }
+  }
+  @include when(always) {
+    box-shadow: 0 2px 16px rgba(0, 0, 0, 0.1);
+  }
+
+  @include bx(closable) {
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 2;
+    background: transparent;
+
+    & > * {
+      background: inherit !important;
+    }
+  }
+
+  @include bx(section, footer) {
+    border-top: inherit;
+    font-size: $xy-font-size-14;
+  }
+  @include bx(header, section, footer) {
+    display: flex;
+    align-items: center;
+    padding: $xy-padding-20;
+    color: $xy-default-color;
+  }
+  @include bx(header) {
+    justify-content: space-between;
+  }
+
+  @include when(color) {
+    & > * {
+      color: var(--xy-card-fill-color);
+    }
+  }
+}

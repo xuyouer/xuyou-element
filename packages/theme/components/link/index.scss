@@ -1,0 +1,116 @@
+@use "../../mixins/index" as *;
+@use "LinkStyles" as *;
+@use "sass:map";
+
+@include b(link) {
+  display: inline-flex;
+  align-items: center;
+  vertical-align: middle;
+  box-sizing: $xy-box-sizing;
+  color: $xy-default-text-color;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  font-size: $xy-font-size-14;
+  padding-bottom: $xy-padding-2;
+
+  --xy-link-color: inherit;
+  --xy-link-fill-color: inherit;
+
+  // & + & {
+  //   margin-left: $xy-margin-10;
+  // }
+
+  &:hover,
+  &:hover > *,
+  &:active {
+    color: $xy-primary-color;
+  }
+
+  &::selection {
+    color: white;
+    background: $xy-default-text-color;
+  }
+
+  &:after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-bottom: $xy-border-base;
+    display: none;
+  }
+  &:hover:after {
+    border-color: $xy-primary-color;
+  }
+
+  @include m(tiny) {
+    font-size: $xy-font-size-12;
+  }
+  @include m(small) {
+    font-size: $xy-font-size-14;
+  }
+  @include m(large) {
+    font-size: $xy-font-size-16;
+  }
+
+  @include when(color) {
+    $color: var(--xy-link-color);
+    $fill-color: var(--xy-link-fill-color);
+
+    color: $color !important;
+
+    &:hover {
+      opacity: $xy-opacity-5;
+    }
+    &:after {
+      border-color: $color !important;
+    }
+    &::selection {
+      background: $color;
+      -webkit-text-fill-color: $fill-color;
+    }
+  }
+
+  @include when(underline) {
+    &:hover:after {
+      display: inline-flex;
+    }
+  }
+
+  @include when(disabled) {
+    cursor: not-allowed;
+    user-select: none;
+    opacity: $xy-opacity-5;
+    color: $xy-default-text-color;
+
+    &:hover:after {
+      display: none;
+    }
+  }
+
+  @each $val in (primary, info, success, warning, danger) {
+    @include m($val) {
+      &:hover {
+        opacity: $xy-opacity-5;
+      }
+
+      @include link-style(
+        $color: map.get($xy-colors, $val),
+        $hover-bg: map.get($xy-colors, $val),
+        $active-bg: map.get($xy-colors, $val),
+      );
+
+      @include when(underline) {
+        &:after {
+          border-color: map.get($xy-colors, $val);
+        }
+      }
+
+      @include when(disabled) {
+        color: map.get($xy-colors, $val);
+      }
+    }
+  }
+}
