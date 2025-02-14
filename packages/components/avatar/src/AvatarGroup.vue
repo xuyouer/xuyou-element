@@ -38,16 +38,16 @@ const avatarGroupStyles = computed(() => {
     } : {}),
   }
 })
-const avatarGroup = ref(null)
+const avatarGroup = ref<HTMLDivElement | null>(null)
 const updateHiddenAvatars = () => {
   if (avatarGroup?.value) {
-    const children: Element[] = Array.from(avatarGroup?.value?.querySelectorAll(".xy-avatar-group > *:not(.xy-avatar-group-more)"))
+    const children: HTMLDivElement[] = Array.from(avatarGroup?.value?.querySelectorAll(".xy-avatar-group > *:not(.xy-avatar-group-more)"))
     if (props.overflow === "number") {
-      children.forEach((child: Element, index: number) => {
+      children.forEach((child: HTMLDivElement, index: number) => {
         child.style.display = index >= validatedMax?.value ? "none" : ""
       })
     } else {
-      children.forEach((child: Element) => {
+      children.forEach((child: HTMLDivElement) => {
         child.style.display = ""
       })
     }
@@ -70,8 +70,8 @@ watch(() => props?.overflow, updateHiddenAvatars)
   >
     <slot></slot>
     <xy-avatar
-      type="primary"
       v-if="remainingCount > 0"
+      type="primary"
       :class="bem.b('more')"
     >
       +{{ remainingCount }}

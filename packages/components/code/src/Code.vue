@@ -70,12 +70,12 @@ const highlightCode = computed(() => {
     return props?.code || ""
   }
 })
-const showcasePreCode = ref(null)
+const showcasePreCode = ref<HTMLElement | null>(null)
+const preCodeHeight = computed(() => (showcasePreCode?.value?.scrollHeight ?? 0) > 200)
 const showcased = ref(false)
 const togglePrev = () => {
   showcased.value = !showcased.value
 }
-const preCodeHeight = computed(() => showcasePreCode?.value?.scrollHeight > 200)
 const buttons = computed(() => {
   const defaultButtons = [
     ...(props?.showEditButton

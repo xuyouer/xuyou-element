@@ -1,6 +1,6 @@
 {
   "name": "xuyou-element",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Components library by Vite + Vue3 + TS",
   "type": "module",
   "main": "./dist/umd/index.umd.cjs",
@@ -32,7 +32,16 @@
     "clean": "rimraf dist",
     "release": "release-it"
   },
-  "keywords": [],
+  "keywords": [
+    "kaloo",
+    "xiaomizha",
+    "xuyou",
+    "js",
+    "xuyou-element",
+    "element",
+    "组件库",
+    "前端组件库"
+  ],
   "author": "",
   "license": "MIT",
   "dependencies": {
@@ -49,16 +58,6 @@
   "peerDependencies": {
     "vue": "^3.5.13"
   },
-  "keywords": [
-    "kaloo",
-    "xiaomizha",
-    "xuyou",
-    "js",
-    "xuyou-element",
-    "element",
-    "组件库",
-    "前端组件库"
-  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/xuyouer/xuyou-element"

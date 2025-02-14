@@ -19,7 +19,13 @@ const props = withDefaults(defineProps<SpaceProps>(), {
 const slots = defineSlots()
 // const hasContent = computed(() => !!slots?.default?.().length)
 const spaceStyles = computed<CSSProperties>(() => {
-  if (!props?.alignItems && !props?.justifyContent && !props?.overflow && !props?.spaceStyle) return {}
+  if (
+    !props?.alignItems
+    && !props?.justifyContent
+    && !props?.overflow
+    && !props?.size
+    && !props?.spaceStyle
+  ) return {}
   return {
     ...(props?.alignItems ? {
       alignItems: props?.alignItems,

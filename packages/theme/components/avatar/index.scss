@@ -21,6 +21,7 @@
 
   --xy-avatar-color: inherit;
   --xy-avatar-text-color: inherit;
+  --xy-avatar-size: inherit;
 
   & > * {
     display: inline-flex;
@@ -86,6 +87,15 @@
   }
   @include m(large) {
     @include avatar-size($xy-avatar-large-size, $xy-font-size-16);
+  }
+  @include m(custom) {
+    &:is(.is-placeholder) {
+      letter-spacing: var(--xy-avatar-size);
+      line-height: var(--xy-avatar-size);
+      text-indent: var(--xy-avatar-size);
+    }
+
+    @include avatar-size(var(--xy-avatar-size), $xy-font-size-14);
   }
 
   @each $val in (primary, info, success, warning, danger) {

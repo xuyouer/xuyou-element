@@ -31,12 +31,15 @@ const iconStyles = computed(() => {
   }
 })
 const avatarStyles = computed(() => {
-  if (!props?.color) return {}
+  if (!props?.color && !size?.value) return {}
   const textFillColor = getContrastingColor(props?.color)
   return {
     ...(props?.color ? {
       "--xy-avatar-color": props?.color,
       "--xy-avatar-text-color": textFillColor,
+    } : {}),
+    ...(typeof size?.value === "number" ? {
+      "--xy-avatar-size": `${size?.value}px`,
     } : {}),
   }
 })
@@ -77,7 +80,7 @@ const slotStyles = computed(() => {
     :class="[
       bem.b(),
       bem.m(type),
-      bem.m(size),
+      bem.m(typeof size === 'number' ? 'custom' : size),
       bem.m(shape),
       bem.is('color', color),
       bem.is('bordered', bordered),

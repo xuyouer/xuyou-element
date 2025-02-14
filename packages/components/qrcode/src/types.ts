@@ -1,7 +1,9 @@
 import type {CSSProperties} from "vue";
 
-export type QrCodeType = "canvas" | "svg";
 export type QrCodeLevel = "L" | "M" | "Q" | "H";
+export type QrCodeType = "canvas" | "svg";
+export type QrCodeLogoSize = "large" | "default" | "small" | "tiny";
+export type QrCodeLogoShape = "default" | "square" | "circle";
 
 export interface QrCodeProps {
   // 文本信息
@@ -18,6 +20,18 @@ export interface QrCodeProps {
   type?: QrCodeType;
   // 填充大小
   padding?: number;
+  // logo 图片地址
+  logo?: string;
+  // logo 尺寸
+  logoSize?: QrCodeLogoSize | number;
+  // logo 形状
+  logoShape?: QrCodeLogoShape;
+  // logo 图标
+  logoIcon?: string;
+  // 是否显示 logo
+  showLogo?: boolean;
+  // 是否显示 二维码外边框
+  bordered?: boolean;
   // 自定义类名
   qrCodeClass?: string[];
   // 自定义样式

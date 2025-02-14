@@ -13,7 +13,7 @@ export type AvatarGroupOverflow =
 
 export interface AvatarProps {
   type?: AvatarType;
-  size?: AvatarSize;
+  size?: AvatarSize | number;
   fit?: AvatarFit;  // 图片 Avatar 在容器内的的适应类型
   shape?: AvatarShape;  // Avatar 形状
   src?: string;  // Avatar 图片的源地址
@@ -27,7 +27,7 @@ export interface AvatarProps {
 
 export interface AvatarGroupProps {
   type?: AvatarType;
-  size?: AvatarSize;
+  size?: AvatarSize | number;
   shape?: AvatarShape;
   max?: number;  // 头像组中头像的最大数量
   spacing?: number;  // 头像之间的间距
@@ -37,6 +37,6 @@ export interface AvatarGroupProps {
 
 export interface AvatarGroupContext {
   type?: AvatarType;
-  size?: AvatarSize;
+  size?: AvatarSize | number;
   shape?: AvatarShape;
 }
