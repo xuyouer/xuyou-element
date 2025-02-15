@@ -12,6 +12,7 @@ import {
   xyQrCode,
   xySpace,
   xyText,
+  xyTime,
 } from "@xuyou-element/components";
 import type {Plugin} from "vue"
 
@@ -29,4 +30,5 @@ export default [
   xyQrCode,
   xySpace,
   xyText,
+  xyTime,
 ] as Plugin[]
