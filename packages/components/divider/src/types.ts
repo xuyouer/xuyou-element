@@ -14,7 +14,10 @@ export type DividerDirection = "horizontal" | "vertical";
 export type DividerContentPosition = "left" | "right" | "center";
 
 export interface DividerProps {
-  borderStyle?: DividerBorderStyle;  // 分隔符样式
-  direction?: DividerDirection;  // 分割线方向
-  contentPosition?: DividerContentPosition;  // 自定义分隔线内容的位置
+  // 分隔符样式
+  borderStyle?: DividerBorderStyle;
+  // 分割线方向
+  direction?: DividerDirection;
+  // 自定义分隔线内容的位置
+  contentPosition?: DividerContentPosition;
 }

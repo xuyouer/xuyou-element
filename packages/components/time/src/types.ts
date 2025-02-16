@@ -1,4 +1,5 @@
 import {getTimeZoneSupported} from "@xuyou-element/utils";
+import type {CSSProperties} from "vue";
 
 export type TimeFormat =
   | "yyyy-MM-dd hh:mm:ss"
@@ -30,4 +31,8 @@ export interface TimeProps {
   unix?: boolean;
   // 自动更新的间隔, 单位: 秒
   interval?: number;
+  // 自定义类名
+  timeClass?: string[];
+  // 自定义样式
+  timeStyle?: CSSProperties;
 }

@@ -1,5 +1,27 @@
 # 变更日志
 
+## 1.0.4 - 20250217
+
+```markdown
+更新:
+
+1. 组件命名规范
+2. 组件types注释规范
+3. xyPoster灰度测试
+4. xyTime自定义类名和样式
+5. xyCover自定义类名和样式
+
+TODO:
+
+1. xyRow/xyCol
+2. xyImage
+3. xyTag
+4. xyCircle
+5. xyNumeral
+6. xyRandomText
+7. ... ...
+```
+
 ## 1.0.3 - 20250215
 
 ```markdown

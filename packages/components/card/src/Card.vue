@@ -2,7 +2,7 @@
 import {createNamespace, getContrastingColor} from "@xuyou-element/utils";
 import type {CardEmits, CardProps} from "./types";
 import {computed, ref} from "vue";
-import {xyButton} from "../../button";
+import {xyButton} from "../../Button";
 
 defineOptions({
   name: "xyCard",

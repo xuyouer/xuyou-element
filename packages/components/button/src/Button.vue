@@ -3,7 +3,7 @@ import {ref, computed, inject} from "vue";
 import {createNamespace, darken, getContrastingColor} from "@xuyou-element/utils";
 import type {ButtonEmits, ButtonInstance, ButtonProps} from "./types";
 import {throttle} from "lodash-es";
-import {xyIcon} from "../../icon";
+import {xyIcon} from "../../Icon";
 import {BUTTON_GROUP_CONTEXT_KEY} from "./constants";
 
 defineOptions({

@@ -14,25 +14,37 @@ export type AvatarGroupOverflow =
 export interface AvatarProps {
   type?: AvatarType;
   size?: AvatarSize | number;
-  fit?: AvatarFit;  // 图片 Avatar 在容器内的的适应类型
-  shape?: AvatarShape;  // Avatar 形状
-  src?: string;  // Avatar 图片的源地址
-  srcSet?: string;  // 图片 Avatar 的原生 srcset 属性
-  alt?: string;  // 图片 Avatar 的原生 alt 属性
+  // 图片 Avatar 在容器内的的适应类型
+  fit?: AvatarFit;
+  // Avatar 形状
+  shape?: AvatarShape;
+  // Avatar 图片的源地址
+  src?: string;
+  // 图片 Avatar 的原生 srcset 属性
+  srcSet?: string;
+  // 图片 Avatar 的原生 alt 属性
+  alt?: string;
   icon?: string | Component;
-  color?: string;  // Avatar 背景色
-  bordered?: boolean;  // Avatar 是否带边框
-  placeholder?: boolean;  // Avatar 首字符占位
+  // Avatar 背景色
+  color?: string;
+  // Avatar 是否带边框
+  bordered?: boolean;
+  // Avatar 首字符占位
+  placeholder?: boolean;
 }
 
 export interface AvatarGroupProps {
   type?: AvatarType;
   size?: AvatarSize | number;
   shape?: AvatarShape;
-  max?: number;  // 头像组中头像的最大数量
-  spacing?: number;  // 头像之间的间距
-  direction?: AvatarGroupDirection;  // 头像组的排列方向
-  overflow?: AvatarGroupOverflow;  // 头像数量超出最大数量 显示剩余的头像
+  // 头像组中头像的最大数量
+  max?: number;
+  // 头像之间的间距
+  spacing?: number;
+  // 头像组的排列方向
+  direction?: AvatarGroupDirection;
+  // 头像数量超出最大数量 显示剩余的头像
+  overflow?: AvatarGroupOverflow;
 }
 
 export interface AvatarGroupContext {

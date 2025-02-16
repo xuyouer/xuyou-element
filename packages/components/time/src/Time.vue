@@ -17,7 +17,10 @@ const props = withDefaults(defineProps<TimeProps>(), {
 const slots = defineSlots()
 // const hasContent = computed(() => !!slots?.default?.().length)
 const timeStyles = computed(() => {
-  return {}
+  if (!props?.timeStyle) return {}
+  return {
+    ...(props?.timeStyle ?? {}),
+  }
 })
 
 const displayedTime = ref<string | number>("")
@@ -62,7 +65,7 @@ watch(
 </script>
 
 <template>
-  <div :class="bem.b()" :style="timeStyles">
+  <div :class="[bem.b(), ...(timeClass ?? [])]" :style="timeStyles">
     {{ displayedTime }}
   </div>
 </template>

@@ -2,7 +2,7 @@
 import {createNamespace, getPrettierParser} from "@xuyou-element/utils";
 import {computed, ref} from "vue";
 import type {CodeEmits, CodeProps} from "./types";
-import {xyButton, xyButtonGroup} from "../../button";
+import {xyButton, xyButtonGroup} from "../../Button";
 import * as prettier from "prettier";
 import pluginHtml from "prettier/plugins/html";
 import pluginBabel from "prettier/plugins/babel";

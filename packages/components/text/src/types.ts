@@ -4,10 +4,16 @@ export type TextSize = "large" | "default" | "small" | "tiny";
 export interface TextProps {
   type?: TextType;
   size?: TextSize;
-  truncated?: boolean;  // 显示省略号
-  lineClamp?: string | number;  // 最大行数
-  tag?: string;  // 自定义元素标签
+  // 显示省略号
+  truncated?: boolean;
+  // 最大行数
+  lineClamp?: string | number;
+  // 自定义元素标签
+  tag?: string;
+  // 文字颜色
   color?: string;
+  // 背景渐变色
   gradient?: string;
-  coloured?: boolean;  // 显示背景色
+  // 显示背景色
+  coloured?: boolean;
 }

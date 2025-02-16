@@ -1,3 +1,5 @@
+import type {CSSProperties} from "vue";
+
 export type CoverTitlePosition =
   | "top"
   | "top-start"
@@ -15,14 +17,20 @@ export type CoverTitlePosition =
   ;
 
 export interface CoverProps {
-  bordered?: boolean;  // 边框
-  outlined?: boolean,  // 内描边
-  mask?: boolean,  // 半透明遮罩背景
-  feather?: boolean,  // 矩形羽化
-  width?: number,
-  height?: number,
-  title?: string,
-  subtitle?: string,
-  titlePosition?: CoverTitlePosition,
-  padding?: number,
+  // 边框
+  bordered?: boolean;
+  // 内描边
+  outlined?: boolean;
+  // 半透明遮罩背景
+  mask?: boolean;
+  // 矩形羽化
+  feather?: boolean;
+  width?: number;
+  height?: number;
+  title?: string;
+  subtitle?: string;
+  titlePosition?: CoverTitlePosition;
+  padding?: number;
+  coverClass?: string[];
+  coverStyle?: CSSProperties;
 }

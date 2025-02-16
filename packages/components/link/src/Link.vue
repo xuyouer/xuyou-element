@@ -2,7 +2,7 @@
 import type {LinkProps} from "./types";
 import {createNamespace, getContrastingColor} from "@xuyou-element/utils";
 import {computed} from "vue";
-import {xyIcon} from "../../icon";
+import {xyIcon} from "../../Icon";
 
 defineOptions({
   name: "xyLink",

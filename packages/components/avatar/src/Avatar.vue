@@ -2,7 +2,7 @@
 import {computed, inject} from 'vue'
 import type {AvatarProps} from "./types";
 import {createNamespace, getContrastingColor} from "@xuyou-element/utils";
-import {xyIcon} from "../../icon";
+import {xyIcon} from "../../Icon";
 import {AVATAR_GROUP_CONTEXT_KEY} from "./constants";
 
 defineOptions({

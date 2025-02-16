@@ -1,6 +1,6 @@
 @use "../../mixins/index" as *;
 
-@include b(poster) {
+@include b(random-text) {
   display: inline-flex;
   vertical-align: middle;
 }

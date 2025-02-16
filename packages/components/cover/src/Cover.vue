@@ -19,7 +19,7 @@ const props = withDefaults(defineProps<CoverProps>(), {
 })
 const slots = defineSlots()
 const coverStyles = computed(() => {
-  if (!props?.width && !props?.height) return {}
+  if (!props?.width && !props?.height && !props?.coverStyle) return {}
   return {
     ...(props?.width ? {
       "--xy-cover-width": `${props?.width}px`,
@@ -27,6 +27,7 @@ const coverStyles = computed(() => {
     ...(props?.height ? {
       "--xy-cover-height": `${props?.height}px`,
     } : {}),
+    ...(props?.coverStyle ?? {}),
   }
 })
 const hasContent = computed(() => !!slots.default?.().length)
@@ -51,6 +52,7 @@ const titleStyles = computed(() => {
       bem.b(),
       bem.is('bordered', bordered),
       bem.is('outlined', outlined),
+      ...(coverClass ?? []),
     ]"
     :style="coverStyles"
   >

@@ -2,7 +2,7 @@
 import {createNamespace} from "@xuyou-element/utils";
 import type {QrCodeProps} from "./types";
 import {computed, type CSSProperties, onMounted, ref, watch} from "vue";
-import {xyAvatar} from "../../avatar";
+import {xyAvatar} from "../../Avatar";
 import QRCode from "qrcode";
 
 defineOptions({
