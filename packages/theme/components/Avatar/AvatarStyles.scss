@@ -1,0 +1,20 @@
+@use "../../mixins/index" as *;
+
+@mixin avatar-size($size, $font-size) {
+  font-size: $font-size !important;
+  width: $size;
+  height: $size;
+
+  & > img {
+    width: calc(#{$size} - 2px);
+    height: calc(#{$size} - 2px);
+
+    &::before {
+      line-height: $size;
+    }
+  }
+
+  @include when(placeholder) {
+    line-height: $size;
+  }
+}

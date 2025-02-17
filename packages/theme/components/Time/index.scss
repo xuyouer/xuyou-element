@@ -1,0 +1,7 @@
+@use "../../mixins/index" as *;
+
+@include b(time) {
+  display: inline-flex;
+  vertical-align: middle;
+  font-size: $xy-font-size-14;
+}

@@ -1,0 +1,21 @@
+@use "../../mixins/index" as *;
+@use "sass:color";
+
+@mixin colour-style($color) {
+  padding: $xy-padding-0-15;
+  background: linear-gradient(
+      100deg,
+      rgba($color, 0) 1%,
+      rgba($color, 1) 2.5%,
+      rgba($color, .5) 5.7%,
+      rgba($color, .1) 93%,
+      rgba($color, .71) 95%,
+      rgba($color, 0) 98%
+  ),
+  linear-gradient(
+      182deg,
+      rgba($color, 0),
+      rgba($color, .3) 8%,
+      rgba($color, 0) 15%
+  );
+}

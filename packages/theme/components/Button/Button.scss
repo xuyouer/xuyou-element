@@ -1,0 +1,257 @@
+@use "../../mixins/index" as *;
+@use "ButtonStyles" as *;
+@use "sass:color";
+@use "sass:map";
+
+@include b(button) {
+  cursor: pointer;
+  border-radius: $xy-border-radius-base;
+  font-size: $xy-font-size-base;
+  border: $xy-border-base;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  user-select: none;
+  position: relative;
+  vertical-align: middle;
+  color: $xy-default-text-color;
+  height: $xy-button-default-height-base;
+  padding: $xy-button-default-padding-base;
+  background: white;
+  transition: all .3s;
+  letter-spacing: 0.05em;
+  box-sizing: $xy-box-sizing;
+  outline: none;
+  overflow: hidden;
+  line-height: 2;
+  text-align: justify;
+  text-align-last: justify;
+
+  --xy-button-hover-text-color: inherit;
+  --xy-button-active-text-color: inherit;
+  --xy-button-hover-color: inherit;
+  --xy-button-active-color: inherit;
+  --xy-button-color: inherit;
+
+  // & + & {
+  //   margin-left: $xy-margin-8;
+  // }
+  &:hover,
+  &:focus {
+    // color: lighten($primary-color, 5%);
+    $color: color.adjust($xy-primary-color, $lightness: $xy-lighten-lightness-5);
+    $hover-color: color.adjust($xy-primary-color, $lightness: $xy-lighten-lightness-40);
+    color: $color;
+    border-color: $color;
+    background: $hover-color;
+
+    @include b(icon) {
+      color: $color;
+    }
+  }
+  &:active {
+    // color: darken($primary-color, 10%);
+    $color: color.adjust($xy-primary-color, $lightness: $xy-darken-lightness-10);
+    color: $color;
+    border-color: $color;
+
+    @include b(icon) {
+      color: $color;
+    }
+  }
+
+  @include when(textcolor) {
+    $hover: var(--xy-button-hover-text-color);
+    $active: var(--xy-button-active-text-color);
+
+    @include b(icon) {
+      color: $hover !important;
+    }
+
+    &:hover,
+    &:focus {
+      color: $hover !important;
+    }
+    &:active {
+      color: $active !important;
+    }
+  }
+  @include when(color) {
+    $hover: var(--xy-button-hover-color);
+    $active: var(--xy-button-active-color);
+    $color: var(--xy-button-color);
+    color: $color !important;
+    border-color: $hover !important;
+
+    @include b(icon) {
+      color: $color !important;
+    }
+
+    &:hover,
+    &:focus {
+      background: $hover !important;
+      color: $color !important;
+    }
+    &:active {
+      background: $active !important;
+      color: $color !important;
+    }
+  }
+
+
+  @include when(round) {
+    border-radius: $xy-border-radius-round-base;
+    min-width: calc($xy-button-default-width-base + 10px);
+  }
+  @include when(circle) {
+    border-radius: $xy-border-radius-circle-base;
+    width: $xy-button-default-width-base;
+    overflow: hidden;
+
+    & > * {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 16px;
+      width: 1em;
+      height: 1em;
+      object-fit: cover;
+    }
+  }
+  @include when(dashed) {
+    @include dashed-button-style($xy-default-text-color);
+
+    @include when(disabled, loading) {
+      @include loading-disabled-button-style($xy-button-dashed-background-base, $xy-default-text-color);
+    }
+  }
+  @include when(plain) {
+    @include plain-button-style($xy-primary-color, false);
+
+    @include when(disabled, loading) {
+      @include loading-disabled-button-style(white, $xy-primary-color);
+    }
+  }
+  @include when(text) {
+    border: $xy-button-text-border-base;
+    background: $xy-button-text-background-base;
+
+    &:hover,
+    &:focus {
+      background: $xy-button-text-background-bg-base;
+      border-color: color.adjust($xy-primary-color, $lightness: $xy-lighten-lightness-5);
+      $hover-color: color.adjust($xy-primary-color, $lightness: $xy-lighten-lightness-5);
+      color: $hover-color;
+
+      @include b(icon) {
+        color: $hover-color;
+      }
+    }
+    &:active {
+      border-color: color.adjust($xy-primary-color, $lightness: $xy-darken-lightness-10);
+      $hover-color: color.adjust($xy-primary-color, $lightness: $xy-darken-lightness-10);
+      color: $hover-color;
+
+      @include b(icon) {
+        color: $hover-color;
+      }
+    }
+
+    @include when(disabled, loading) {
+      @include loading-disabled-button-style($xy-button-text-background-base, $xy-default-text-color);
+    }
+  }
+  @include when(textbg) {
+    background: $xy-button-text-background-bg-base;
+
+    @include when(disabled, loading) {
+      @include loading-disabled-button-style($xy-button-text-background-bg-base, $xy-default-text-color);
+    }
+  }
+  @include when(strong) {
+    font-weight: $xy-button-strong-font-weight-base;
+  }
+  @include when(loading) {
+    padding: $xy-button-loading-padding-base;
+  }
+  @include when(disabled, loading) {
+    @include loading-disabled-button-style(white, $xy-default-text-color);
+  }
+  @include when(block) {
+    display: flex;
+    width: 100%;
+  }
+
+
+  @include m(tiny) {
+    font-size: $xy-button-tiny-size-base;
+    height: $xy-button-tiny-height-base;
+    padding: $xy-button-tiny-padding-base;
+
+    @include circle-button-size($xy-button-tiny-height-base, $xy-button-tiny-size-base);
+
+    @include when(round) {
+      padding: $xy-button-tiny-round-padding-base;
+    }
+  }
+  @include m(small) {
+    font-size: $xy-button-small-size-base;
+    height: $xy-button-small-height-base;
+    padding: $xy-button-small-padding-base;
+
+    @include circle-button-size($xy-button-small-height-base, $xy-button-small-size-base);
+  }
+  @include m(large) {
+    font-size: $xy-button-large-size-base;
+    height: $xy-button-large-height-base;
+    padding: $xy-button-large-padding-base;
+
+    @include circle-button-size($xy-button-large-height-base, $xy-button-large-size-base);
+  }
+
+
+  @each $color in (primary, info, success, warning, danger) {
+    @include m($color) {
+      @include button-style(
+        $background: map.get($xy-colors, $color),
+        $color: white,
+        $hover-bg: map.get($xy-colors, $color),
+        $active-bg: map.get($xy-colors, $color),
+      );
+      @include when(dashed) {
+        @include dashed-button-style(map.get($xy-colors, $color));
+
+        @include when(disabled, loading) {
+          @include loading-disabled-button-style($xy-button-dashed-background-base, map.get($xy-colors, $color));
+        }
+      }
+      @include when(plain) {
+        @include plain-button-style(map.get($xy-colors, $color));
+
+        @include when(disabled, loading) {
+          @include loading-disabled-button-style(color.adjust(map.get($xy-colors, $color), $lightness: $xy-lighten-lightness-42), map.get($xy-colors, $color));
+        }
+      }
+      @include when(text) {
+        color: map.get($xy-colors, $color);
+
+        @include when(disabled, loading) {
+          @include loading-disabled-button-style($xy-button-text-background-base, map.get($xy-colors, $color));
+        }
+
+        @include b(icon) {
+          color: map.get($xy-colors, $color);
+        }
+      }
+      @include when(textbg) {
+        @include when(disabled, loading) {
+          @include loading-disabled-button-style($xy-button-text-background-bg-base, map.get($xy-colors, $color));
+        }
+      }
+      @include when(disabled, loading) {
+        @include loading-disabled-button-style(map.get($xy-colors, $color), white);
+      }
+    }
+  }
+}

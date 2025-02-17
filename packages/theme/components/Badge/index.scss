@@ -1,0 +1,112 @@
+@use "../../mixins/index" as *;
+@use "sass:map";
+
+@include b(badge) {
+  display: inline-flex;
+  vertical-align: middle;
+  user-select: none;
+  font-size: $xy-font-size-12;
+  position: relative;
+
+  --xy-badge-color: inherit;
+  --xy-badge-text-color: inherit;
+  --xy-badge-transform: inherit;
+
+  @include bx(val) {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(to right bottom, rgba(255, 255, 255, .4), transparent) $xy-default-text-color;
+    background-blend-mode: soft-light;
+    color: white;
+    border-radius: $xy-border-radius-round-50;
+    position: absolute;
+    top: $xy-badge-position;
+    right: $xy-badge-position;
+    z-index: 9;
+    padding: $xy-padding-2-5;
+    transform: var(--xy-badge-transform);
+    line-height: 1;
+
+    @include b(icon) {
+      color: white;
+    }
+  }
+
+  @include when(color) {
+    $color: var(--xy-badge-color);
+    $textColor: var(--xy-badge-text-color);
+
+    & > div:first-child {
+      background-color: $color;
+      color: $textColor;
+
+      @include b(icon) {
+        color: $textColor;
+      }
+    }
+  }
+
+  @include when(dot) {
+    & > div:first-child {
+      width: $xy-badge-dot-size;
+      height: $xy-badge-dot-size;
+      border-radius: $xy-border-radius-circle-50;
+      padding: $xy-padding-0;
+      top: $xy-badge-dot-position;
+      right: $xy-badge-dot-position;
+      z-index: $xy-badge-dot-z-index;
+
+      @include b(icon) {
+        display: none;
+      }
+    }
+  }
+
+  @include when(corner) {
+    & > div:first-child {
+      border-radius: $xy-border-radius-4;
+      border-bottom-left-radius: initial;
+      right: initial;
+      left: $xy-badge-dot-position;
+      font-size: $xy-font-size-10;
+      padding: $xy-padding-2-5;
+    }
+    & > div:first-child::before {
+      content: "";
+      position: absolute;
+      width: $xy-badge-corner-size;
+      height: $xy-badge-corner-size;
+      left: 0;
+      bottom: $xy-badge-corner-position;
+      background-color: inherit;
+      filter: brightness(.7);
+      clip-path: polygon(0 0, 100% 0, 100% 100%);
+    }
+  }
+
+  @include when(remark) {
+    & > div:first-child {
+      top: initial;
+      right: 0;
+      border-radius: 0 $xy-border-radius-6;
+      font-size: $xy-font-size-10;
+      padding: $xy-padding-2-5;
+    }
+  }
+
+  @each $val in (primary, info, success, warning, danger) {
+    @include m($val) {
+      $color: map.get($xy-colors, $val);
+
+      & > div:first-child {
+        background-color: $color;
+        color: white;
+
+        @include b(icon) {
+          color: white;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,110 @@
+@use "../../mixins/index" as *;
+@use "AvatarStyles" as *;
+@use "sass:map";
+
+@include b(avatar) {
+  display: inline-flex;
+  vertical-align: middle;
+  user-select: none;
+  width: $xy-avatar-size;
+  height: $xy-avatar-size;
+  color: $xy-default-text-color;
+  background: white;
+  border: $xy-border-base;
+  border-color: transparent;
+  border-radius: $xy-border-radius-2;
+  font-size: $xy-font-size-base;
+  overflow: hidden;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
+
+  --xy-avatar-color: inherit;
+  --xy-avatar-text-color: inherit;
+  --xy-avatar-size: inherit;
+
+  & > * {
+    display: inline-flex;
+  }
+  &:has(> img) {
+    white-space: initial;
+  }
+  & > img {
+    width: calc($xy-avatar-size - 2px);
+    height: calc($xy-avatar-size - 2px);
+
+    &::before {
+      content: attr(alt);
+      display: inline-flex;
+      height: inherit;
+      line-break: anywhere;
+      text-transform: capitalize;
+      justify-content: center;
+      letter-spacing: $xy-avatar-size;
+      line-height: $xy-avatar-size;
+      text-indent: $xy-avatar-size;
+    }
+  }
+
+  @include when(bordered) {
+    border-color: $xy-border-color;
+  }
+  @include when(placeholder) {
+    align-items: initial;
+    white-space: initial;
+    line-break: anywhere;
+    text-transform: capitalize;
+    justify-content: center;
+    letter-spacing: $xy-avatar-size;
+    line-height: $xy-avatar-size;
+    text-indent: $xy-avatar-size;
+
+    & > * {
+      font-size: inherit !important;
+    }
+  }
+  @include when(color) {
+    $color: var(--xy-avatar-color);
+    $textColor: var(--xy-avatar-text-color);
+
+    border-color: $color;
+    background: $color;
+    color: $textColor;
+  }
+
+  @include m(circle) {
+    border-radius: $xy-border-radius-circle-50;
+  }
+  @include m(square) {
+    border-radius: $xy-border-radius-6;
+  }
+
+  @include m(tiny) {
+    @include avatar-size($xy-avatar-tiny-size, $xy-font-size-12);
+  }
+  @include m(small) {
+    @include avatar-size($xy-avatar-small-size, $xy-font-size-14);
+  }
+  @include m(large) {
+    @include avatar-size($xy-avatar-large-size, $xy-font-size-16);
+  }
+  @include m(custom) {
+    &:is(.is-placeholder) {
+      letter-spacing: var(--xy-avatar-size);
+      line-height: var(--xy-avatar-size);
+      text-indent: var(--xy-avatar-size);
+    }
+
+    @include avatar-size(var(--xy-avatar-size), $xy-font-size-14);
+  }
+
+  @each $val in (primary, info, success, warning, danger) {
+    @include m($val) {
+      $color: map.get($xy-colors, $val);
+
+      border-color: $color;
+      background: $color;
+      color: white;
+    }
+  }
+}

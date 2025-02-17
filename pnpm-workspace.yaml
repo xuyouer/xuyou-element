@@ -1,0 +1,4 @@
+packages:
+  - example  # 组件测试开发
+  - docs  # 组件文档
+  - "packages/**"

@@ -1,0 +1,17 @@
+{
+  "name": "@xuyou-element/components",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.ts",
+  "scripts": {
+    "test": "vitest --coverage"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "@vitest/coverage-v8": "^2.1.8",
+    "@vue/test-utils": "^2.4.6",
+    "jsdom": "^25.0.1"
+  }
+}

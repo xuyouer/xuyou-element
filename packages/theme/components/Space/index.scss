@@ -1,0 +1,75 @@
+@use "../../mixins/index" as *;
+
+@include b(space) {
+  display: inline-flex;
+  vertical-align: middle;
+
+  --xy-space-size: inherit;
+
+  @include when(block) {
+    width: 100%;
+    display: flex;
+  }
+  @include when(wrap) {
+    flex-wrap: wrap;
+  }
+
+  @include m(horizontal) {
+    flex-direction: row;
+  }
+  @include m(horizontal-reverse) {
+    flex-direction: row-reverse;
+  }
+  @include m(vertical) {
+    flex-direction: column;
+  }
+  @include m(vertical-reverse) {
+    flex-direction: column-reverse;
+  }
+
+  @include m(large) {
+    & > * + * {
+      margin-left: $xy-padding-20;
+    }
+  }
+  @include m(default) {
+    & > * + * {
+      margin-left: $xy-padding-10;
+    }
+  }
+  @include m(small) {
+    & > * + * {
+      margin-left: $xy-padding-8;
+    }
+  }
+  @include m(tiny) {
+    & > * + * {
+      margin-left: $xy-padding-5;
+    }
+  }
+  @include m(custom) {
+    & > * + * {
+      margin-left: var(--xy-space-size);
+    }
+  }
+  @include m(vertical, vertical-reverse) {
+    & > * + * {
+      margin-left: initial;
+    }
+    &:is(.xy-space--large) > * + * {
+      margin-top: $xy-padding-20;
+    }
+    &:is(.xy-space--default) > * + * {
+      margin-top: $xy-padding-10;
+    }
+    &:is(.xy-space--small) > * + * {
+      margin-top: $xy-padding-8;
+    }
+    &:is(.xy-space--tiny) > * + * {
+      margin-top: $xy-padding-5;
+    }
+    &:is(.xy-space--custom) > * + * {
+      margin-top: var(--xy-space-size);
+    }
+  }
+}

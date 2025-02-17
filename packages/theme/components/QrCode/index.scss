@@ -1,0 +1,25 @@
+@use "../../mixins/index" as *;
+
+@include b(qr-code) {
+  display: inline-flex;
+  vertical-align: middle;
+  background: var(--xy-qr-code-background-color);
+  border-radius: $xy-border-radius-6;
+  position: relative;
+  overflow: hidden;
+  font-size: $xy-font-size-14;
+
+  --xy-qr-code-background-color: inherit;
+
+  @include when(bordered) {
+    border: $xy-border-base;
+  }
+
+  & > *:is(.xy-qr-code-logo) {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+  }
+}

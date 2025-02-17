@@ -1,0 +1,173 @@
+@use "hue" as *;
+@forward "hue";
+
+// lightness
+$xy-lighten-lightness-5: 5%;
+$xy-lighten-lightness-10: 10%;
+$xy-lighten-lightness-40: 40%;
+$xy-lighten-lightness-42: 42%;
+$xy-darken-lightness-5: -5%;
+$xy-darken-lightness-10: -10%;
+
+
+$xy-default-text-color: $secondary;
+
+
+// font
+$xy-font-size-10: 10px;
+$xy-font-size-12: 12px;
+$xy-font-size-14: 14px;
+$xy-font-size-16: 16px;
+$xy-font-size-18: 18px;
+$xy-font-size-base: $xy-font-size-14;
+
+
+$xy-line-height-2: 2;
+$xy-line-height-1_5: 1.5;
+$xy-line-height-1_2: 1.2;
+$xy-line-height-1: 1;
+
+
+// opacity
+$xy-opacity-5: .5;
+$xy-opacity-6: .6;
+$xy-opacity-base: $xy-opacity-5;
+
+
+// text
+$xy-letter-spacing-40: 40px;
+$xy-letter-spacing-50: 50px;
+
+
+// border
+$xy-border-color: rgba(73, 87, 112, .2);
+$xy-border-base: 1px solid $xy-border-color;
+$xy-border-radius-2: 2px;
+$xy-border-radius-4: 4px;
+$xy-border-radius-6: 6px;
+$xy-border-radius-base: $xy-border-radius-6;
+$xy-border-radius-round-50: 50px;
+$xy-border-radius-round-base: $xy-border-radius-round-50;
+$xy-border-radius-vertical-round-10: 10px;
+$xy-border-radius-vertical-round-base: $xy-border-radius-vertical-round-10;
+$xy-border-radius-circle-50: 50%;
+$xy-border-radius-circle-base: $xy-border-radius-circle-50;
+
+
+// outline
+$xy-outline-color: $xy-border-color;
+$xy-outline-base: 1px solid $xy-outline-color;
+$xy-outline-offset: -1px;
+
+
+// box
+$xy-box-sizing: border-box;
+$xy-box-shadow-base: 8px 8px 20px 0 rgb(55 99 170 / 10%);
+
+
+// background
+$xy-background-base: linear-gradient(0deg, #FFF 0, #F3F5F8 100%);
+
+
+// width height
+$xy-width-35: 35px;
+$xy-width-20: 20px;
+$xy-height-40: 40px;
+$xy-height-35: 35px;
+$xy-height-30: 30px;
+$xy-height-25: 25px;
+$xy-height-20: 20px;
+
+
+// margin padding
+$xy-margin-0: 0;
+$xy-margin-40: 40px;
+$xy-margin-35: 35px;
+$xy-margin-20: 20px;
+$xy-margin-10: 10px;
+$xy-margin-8: 8px;
+$xy-margin-5: 5px;
+$xy-margin-20-0: 20px 0;
+$xy-margin-0-20: 0 20px;
+$xy-margin-0-10: 0 10px;
+$xy-margin-0-8: 0 8px;
+$xy-padding-0: 0;
+$xy-padding-40: 40px;
+$xy-padding-35: 35px;
+$xy-padding-20: 20px;
+$xy-padding-15: 15px;
+$xy-padding-10: 10px;
+$xy-padding-8: 8px;
+$xy-padding-5: 5px;
+$xy-padding-2: 2px;
+$xy-padding-20-0: 20px 0;
+$xy-padding-0-30: 0 30px;
+$xy-padding-0-20: 0 20px;
+$xy-padding-0-15: 0 15px;
+$xy-padding-0-10: 0 10px;
+$xy-padding-0-8: 0 8px;
+$xy-padding-0-5: 0 5px;
+$xy-padding-0-2: 0 2px;
+$xy-padding-2-8: 2px 8px;
+$xy-padding-2-5: 2px 5px;
+$xy-margin-base: $xy-margin-20-0;
+$xy-margin-o-base: $xy-margin-20;
+$xy-padding-base: $xy-padding-0-20;
+$xy-padding-o-base: $xy-padding-20;
+
+
+// badge
+$xy-badge-position: -5px;
+$xy-badge-dot-size: 8px;
+$xy-badge-dot-position: -3px;
+$xy-badge-dot-z-index: 99;
+$xy-badge-corner-size: 3px;
+$xy-badge-corner-position: -3px;
+
+
+// avatar
+$xy-avatar-size: 40px;
+$xy-avatar-tiny-size: 25px;
+$xy-avatar-small-size: 30px;
+$xy-avatar-large-size: 55px;
+
+
+// button
+$xy-button-default-width-base: $xy-width-35;
+$xy-button-default-height-base: $xy-height-35;
+$xy-button-default-padding-base: $xy-padding-0-15;
+$xy-button-default-outline-base: 1px solid white;
+$xy-button-default-outline-offset-base: 0;
+// button tiny
+$xy-button-tiny-size-base: $xy-font-size-12;
+$xy-button-tiny-height-base: $xy-height-25;
+$xy-button-tiny-padding-base: $xy-padding-0-5;
+$xy-button-tiny-round-padding-base: $xy-padding-0-8;
+// button small
+$xy-button-small-size-base: $xy-font-size-14;
+$xy-button-small-height-base: $xy-height-30;
+$xy-button-small-padding-base: $xy-padding-0-10;
+// button large
+$xy-button-large-size-base: $xy-font-size-16;
+$xy-button-large-height-base: $xy-height-40;
+$xy-button-large-padding-base: $xy-padding-0-15;
+// button loading
+$xy-button-loading-padding-base: $xy-padding-0-10;
+// button text
+$xy-button-text-border-base: initial;
+$xy-button-text-background-base: white;
+$xy-button-text-background-bg-base: $light-mode;
+// button link
+$xy-button-link-border-base: initial;
+$xy-button-link-padding-base: $xy-padding-0-2;
+$xy-button-link-background-base: white;
+// button strong
+$xy-button-strong-font-weight-base: bold;
+// button dashed
+$xy-button-dashed-background-base: white;
+$xy-button-dashed-border-style-base: dashed;
+$xy-button-dashed-border-weight-base: 1px;
+// button plain
+$xy-button-plain-hover-color-base: white;
+// button-group
+$xy-button-group-border-radius-base: initial;

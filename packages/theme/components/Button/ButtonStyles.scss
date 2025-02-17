@@ -1,0 +1,148 @@
+@use "../../mixins/index" as *;
+@use "sass:color";
+@use "sass:map";
+
+@mixin button-style($background, $color, $hover-bg, $active-bg) {
+  background: $background;
+  color: $color;
+
+  @include b(icon) {
+    color: $color;
+  }
+
+  &:hover,
+  &:focus {
+    color: $color;
+    background: color.adjust($hover-bg, $lightness: $xy-darken-lightness-5);
+
+    @include b(icon) {
+      color: $color;
+    }
+  }
+  &:active {
+    background: color.adjust($active-bg, $lightness: $xy-darken-lightness-10);
+  }
+}
+
+@mixin circle-button-size($width, $font-size) {
+  @include when(circle) {
+    width: $width;
+    overflow: hidden;
+
+    & > * {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: $font-size;
+      width: 1em;
+      height: 1em;
+      object-fit: cover;
+    }
+  }
+}
+
+@mixin plain-button-style($color, $use-background: true) {
+  @if $use-background {
+    border-color: $color;
+    color: $color;
+    background: color.adjust($color, $lightness: $xy-lighten-lightness-40);
+
+    @include b(icon) {
+      color: $color;
+    }
+  } @else {
+    background: white;
+  }
+
+  &:hover,
+  &:focus {
+    @if $use-background {
+      $hover-color: $xy-button-plain-hover-color-base;
+      color: $hover-color;
+      border-color: $color;
+      background: $color;
+
+      @include b(icon) {
+        color: $hover-color;
+      }
+    } @else {
+      $hover-color: color.adjust($xy-primary-color, $lightness: $xy-lighten-lightness-5);
+      color: $hover-color;
+      border-color: $hover-color;
+
+      @include b(icon) {
+        color: $hover-color;
+      }
+    }
+  }
+  &:active {
+    @if $use-background {
+      background: color.adjust($color, $lightness: $xy-darken-lightness-10);
+    } @else {
+      border-color: color.adjust($xy-primary-color, $lightness: $xy-darken-lightness-10);
+    }
+  }
+}
+
+@mixin dashed-button-style($color) {
+  background: $xy-button-dashed-background-base;
+  color: $color;
+  border-color: $color;
+  border-style: $xy-button-dashed-border-style-base;
+  border-width: $xy-button-dashed-border-weight-base;
+
+  @include b(icon) {
+    color: $color;
+  }
+
+  &:hover,
+  &:focus {
+    border-color: color.adjust($color, $lightness: $xy-lighten-lightness-5);
+    $hover-color: color.adjust($color, $lightness: $xy-lighten-lightness-5);
+    color: $hover-color;
+
+    @include b(icon) {
+      color: $hover-color;
+    }
+  }
+  &:active {
+    border-color: color.adjust($color, $lightness: $xy-darken-lightness-10);
+    $hover-color: color.adjust($color, $lightness: $xy-darken-lightness-10);
+    color: $hover-color;
+
+    @include b(icon) {
+      color: $hover-color;
+    }
+  }
+}
+
+@mixin loading-disabled-button-style($bg, $color) {
+  opacity: $xy-opacity-base;
+  cursor: not-allowed;
+  background: $bg;
+  color: $color;
+  border-color: $color;
+
+  &:hover,
+  &:focus,
+  &[disabled],
+  &[disabled]:hover,
+  &[disabled]:focus {
+    background: $bg;
+    color: $color;
+
+    @include b(icon) {
+      color: $color;
+    }
+  }
+
+  &:active {
+    // background: $color;
+  }
+  &:hover,
+  &:focus,
+  &:active {
+    // border-color: inherit;
+  }
+}

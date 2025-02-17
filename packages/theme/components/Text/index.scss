@@ -1,0 +1,90 @@
+@use "../../mixins/index" as *;
+@use "TextStyles" as *;
+@use "sass:map";
+
+@include b(text) {
+  display: inline-flex;
+  vertical-align: middle;
+  font-size: $xy-font-size-14;
+  box-sizing: $xy-box-sizing;
+  color: $xy-default-text-color;
+  margin: initial;
+  padding: initial;
+
+  --xy-text-color: inherit;
+  --xy-text-gradient-color: inherit;
+  --xy-text-fill-color: inherit;
+
+  &::selection {
+    color: white;
+    background: $xy-default-text-color;
+  }
+
+  @include when(truncated) {
+    display: inline-block;
+    max-width: 100%;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+  }
+
+  @include when(line-clamp) {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+  }
+
+  @include m(tiny) {
+    font-size: $xy-font-size-12;
+  }
+  @include m(small) {
+    font-size: $xy-font-size-14;
+  }
+  @include m(large) {
+    font-size: $xy-font-size-16;
+  }
+
+  @include when(color) {
+    $color: var(--xy-text-color);
+    $fill-color: var(--xy-text-fill-color);
+
+    color: $color;
+
+    &::selection {
+      background: $color;
+      -webkit-text-fill-color: $fill-color;
+    }
+  }
+  @include when(gradient) {
+    $bg-color: var(--xy-text-gradient-color);
+    $fill-color: var(--xy-text-fill-color);
+
+    background: $bg-color;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+    &::selection {
+      -webkit-text-fill-color: $fill-color;
+    }
+  }
+  @include when(coloured) {
+    @include colour-style($xy-default-color)
+  }
+
+  @each $val in (primary, info, success, warning, danger) {
+    @include m($val) {
+      $color: map.get($xy-colors, $val);
+
+      color: $color;
+
+      &::selection {
+        background: $color;
+      }
+
+      @include when(coloured) {
+        @include colour-style(map.get($xy-colors, $val))
+      }
+    }
+  }
+}

@@ -1,0 +1,19 @@
+@use "../../mixins/index" as *;
+@use "sass:color";
+
+@mixin link-style($color, $hover-bg, $active-bg) {
+  color: $color;
+
+  &:hover > * {
+    color: $color;
+  }
+  &::selection {
+    background: $color;
+  }
+  &:hover {
+    color: color.adjust($hover-bg, $lightness: $xy-darken-lightness-5);
+  }
+  &:active {
+    color: color.adjust($active-bg, $lightness: $xy-darken-lightness-10);
+  }
+}

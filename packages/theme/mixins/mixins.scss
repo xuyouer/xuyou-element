@@ -1,0 +1,86 @@
+@use "config" as *;
+@forward "config";
+
+// .xy-button{}
+@mixin b($block) {
+  $B: $namespace + '-' + $block;
+  .#{$B} {
+    @content;
+  }
+}
+
+// .xy-button.is-xxx
+@mixin when($state) {
+  @at-root {
+    &.#{$state-prefix + $state} {
+      @content;
+    }
+  }
+}
+
+@mixin when($states...) {
+  @each $state in ($states) {
+    @at-root {
+      &.#{$state-prefix + $state} {
+        @content;
+      }
+    }
+  }
+}
+
+// &-box => .xy-button-box
+@mixin bx($block) {
+  @at-root {
+    #{& + $block-separator + $block} {
+      @content;
+    }
+  }
+}
+
+@mixin bx($blocks...) {
+  @each $block in $blocks {
+    @at-root {
+      #{& + $block-separator + $block} {
+        @content;
+      }
+    }
+  }
+}
+
+// &--primary => .xy-button--primary
+@mixin m($modifier) {
+  @at-root {
+    #{& + $modifier-separator + $modifier} {
+      @content;
+    }
+  }
+}
+
+@mixin m($modifiers...) {
+  @each $modifier in $modifiers {
+    @at-root {
+      #{& + $modifier-separator + $modifier} {
+        @content;
+      }
+    }
+  }
+}
+
+// &__header => .xy-button__header
+@mixin e($element) {
+  @at-root {
+    #{& + $element-separator + $element} {
+      @content;
+    }
+  }
+}
+
+@mixin e($elements...) {
+  @each $element in $elements {
+    @at-root {
+      #{& + $element-separator + $element} {
+        @content;
+      }
+    }
+  }
+}
