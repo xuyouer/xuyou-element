@@ -1,6 +1,6 @@
 {
   "name": "xuyou-element",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "Components library by Vite + Vue3 + TS",
   "type": "module",
   "main": "./dist/umd/index.umd.cjs",
