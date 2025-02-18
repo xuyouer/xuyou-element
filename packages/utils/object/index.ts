@@ -1,5 +1,6 @@
 export * from "./colors"
 export * from "./date"
 export * from "./element"
+export * from "./number"
 export * from "./string"
 export * from "./svg"

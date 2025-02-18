@@ -2,6 +2,8 @@
 
 @include b(random-text) {
   display: inline-flex;
+  vertical-align: middle;
+  align-items: center;
   font-size: $xy-font-size-14;
   line-height: $xy-line-height-1;
   flex-flow: column;

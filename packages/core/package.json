@@ -60,10 +60,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/xuyouer/xuyou-element"
+    "url": "https://github.com/xuyouer/xuyou-element/"
   },
   "bugs": {
     "url": "https://github.com/xuyouer/xuyou-element/issues"
   },
-  "homepage": ""
+  "homepage": "https://xuyouer.github.io/xuyou-element/"
 }

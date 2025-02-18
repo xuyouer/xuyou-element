@@ -1,0 +1,21 @@
+@use "../../mixins/index" as *;
+
+@include b(numeral) {
+  display: inline-flex;
+  vertical-align: middle;
+  align-items: baseline;
+  font-size: $xy-font-size-14;
+  line-height: $xy-line-height-1;
+  letter-spacing: 0.05em;
+
+  @include bx(value) {
+    display: inline-flex;
+    align-items: baseline;
+  }
+
+  @include e(integer) {
+    &:is(.upper) {
+      font-size: $xy-font-size-16;
+    }
+  }
+}

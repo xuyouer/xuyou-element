@@ -39,9 +39,18 @@ export default defineConfig({
             {text: 'Button 按钮', link: '/components/Button'},
             {text: 'Icon 图标', link: '/components/Icon'},
             {text: 'Link 链接', link: '/components/Link'},
-            {text: 'RandomText 随机文本', link: '/components/RandomText'},
-            {text: 'Space 间距', link: '/components/Space'},
             {text: 'Text 文本', link: '/components/Text'},
+          ]
+        },
+        {
+          text: 'Chart 图表组件',
+          items: []
+        },
+        {
+          text: 'Data 数据展示组件',
+          items: [
+            {text: 'Numeral 数值', link: '/components/Numeral'},
+            {text: 'RandomText 随机文本', link: '/components/RandomText'},
             {text: 'Time 时间', link: '/components/Time'},
           ]
         },
@@ -50,18 +59,18 @@ export default defineConfig({
           items: [
             {text: 'Card 卡片', link: '/components/Card'},
             {text: 'Divider 分割线', link: '/components/Divider'},
+            {text: 'Space 间距', link: '/components/Space'},
           ]
         },
         {
           text: 'Navigation 导航组件',
-          items: [
-            {text: 'Badge 徽标', link: '/components/Badge'},
-          ]
+          items: []
         },
         {
           text: 'View 视图组件',
           items: [
             {text: 'Avatar 头像', link: '/components/Avatar'},
+            {text: 'Badge 徽标', link: '/components/Badge'},
             {text: 'Code 代码', link: '/components/Code'},
             {text: 'Cover 封面', link: '/components/Cover'},
             {text: 'Poster 海报', link: '/components/Poster'},
@@ -77,7 +86,7 @@ export default defineConfig({
 
     footer: {
       message: 'Released under the MIT License.',
-      copyright: 'Copyright © 2024-present xuyou, xiaomizha'
+      copyright: 'Copyright © 2024-present xuyou, xiaomizha Ltd. All rights reserved.'
     },
 
     editLink: {

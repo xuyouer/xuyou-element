@@ -33,8 +33,8 @@ const posterStyles = computed(() => {
   <div :class="[bem.b(), ...(posterClass ?? [])]" :style="posterStyles">
     <xy-card block :headerStyle="{padding: 0}">
       <template #header>
-        <xy-badge value="测试" :offset="[-15, 15]"
-                  :badgeStyle="{background: '#F2F2F2', color: '#2F2F2F', borderRadius: '4px'}"
+        <xy-badge value="测试"
+                  :badgeStyle="{background: '#F2F2F2', color: '#2F2F2F', borderRadius: '4px', top: '10px', right: 'initial', left: '10px'}"
         >
           <xy-cover :width="width" :height="width"
                     title="土坡上的狗尾巴草" subtitle="小咪楂"

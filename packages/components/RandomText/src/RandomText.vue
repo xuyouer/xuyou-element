@@ -1,9 +1,14 @@
 <script setup lang="ts">
-import {createNamespace, getSVGBBoxDimension, textToSVGWithStr} from "@xuyou-element/utils";
+import {
+  createNamespace,
+  getSVGBBoxDimension,
+  hitokotoFetch,
+  shiciFetch,
+  textToSVGWithStr
+} from "@xuyou-element/utils";
 import type {RandomTextProps} from "./types";
 import {computed, onMounted, ref, watch} from "vue";
 import {xyIcon} from "../../Icon";
-import * as ShiCi from "jinrishici";
 
 defineOptions({
   name: "xyRandomText",
@@ -28,17 +33,10 @@ const svgRef = ref<SVGElement | null>(null)
 const svgWidth = ref(0)
 const svgHeight = ref(0)
 
-const fetchHitokoto = async (): Promise<string> => {
-  const response = await fetch('https://v1.hitokoto.cn')
-  const {hitokoto} = await response.json()
-  return hitokoto
-}
 const generate = async () => {
   textContent.value = props?.type === "all"
-    ? await fetchHitokoto()
-    : await new Promise<string>((resolve) => {
-      ShiCi.load((result: any) => resolve(result.data.content))
-    })
+    ? (await hitokotoFetch()).hitokoto
+    : await shiciFetch()
   if (props?.renderType === "svg" && svgRef?.value) {
     svgRef.value.innerHTML = textToSVGWithStr(textContent.value).svgString
     const {width, height} = getSVGBBoxDimension(svgRef?.value as SVGGraphicsElement)

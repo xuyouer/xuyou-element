@@ -3,10 +3,10 @@ import {
   toArray,
   tryOnScopeDispose,
   unrefElement
-} from "./chunk-PTLDOECA.js";
+} from "./chunk-5V3HW3ZJ.js";
 import {
   computed,
-  ref,
+  shallowRef,
   toValue,
   watch
 } from "./chunk-GE5V3NVK.js";
@@ -1065,12 +1065,12 @@ var createFocusTrap = function createFocusTrap2(elements, userOptions) {
   return trap;
 };
 
-// ../node_modules/.pnpm/@vueuse+integrations@12.6.1_9ecc866da4697cd9f83865a1850fb2ff/node_modules/@vueuse/integrations/useFocusTrap.mjs
+// ../node_modules/.pnpm/@vueuse+integrations@12.7.0_d8ba593b61dc843315874ddd09d96d90/node_modules/@vueuse/integrations/useFocusTrap.mjs
 function useFocusTrap(target, options = {}) {
   let trap;
   const { immediate, ...focusTrapOptions } = options;
-  const hasFocus = ref(false);
-  const isPaused = ref(false);
+  const hasFocus = shallowRef(false);
+  const isPaused = shallowRef(false);
   const activate = (opts) => trap && trap.activate(opts);
   const deactivate = (opts) => trap && trap.deactivate(opts);
   const pause = () => {
