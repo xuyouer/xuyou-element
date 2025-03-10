@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import {createNamespace} from "@xuyou-element/utils";
 import type {DividerProps} from "./types";
-import {computed} from "vue";
+import {computed, type CSSProperties} from "vue";
 
 defineOptions({
   name: "xyDivider",
@@ -22,9 +22,14 @@ const dividerStyles = computed(() => {
   }
 })
 const hasContent = computed(() => !!slots.default?.().length)
-const contentStyles = computed(() => {
-  if (!hasContent?.value) return {padding: 0}
-  return {}
+const contentStyles = computed<CSSProperties>(() => {
+  if (hasContent?.value && !props?.dividerStyle) return {}
+  return {
+    ...(!hasContent?.value ? {
+      padding: 0,
+    } : {}),
+    ...(props?.dividerStyle ?? {}),
+  }
 })
 </script>
 
@@ -33,7 +38,7 @@ const contentStyles = computed(() => {
     :class="[bem.b(), bem.is(contentPosition, contentPosition), bem.m(direction)]"
     :style="dividerStyles"
   >
-    <div :class="bem.e('content')" :style="contentStyles">
+    <div :class="[bem.e('content'), ...(dividerClass ?? [])]" :style="contentStyles">
       <slot></slot>
     </div>
   </div>

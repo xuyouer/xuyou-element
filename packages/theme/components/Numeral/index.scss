@@ -6,7 +6,7 @@
   align-items: baseline;
   font-size: $xy-font-size-14;
   line-height: $xy-line-height-1;
-  letter-spacing: 0.05em;
+  letter-spacing: $xy-letter-spacing-0-05;
 
   @include bx(value) {
     display: inline-flex;

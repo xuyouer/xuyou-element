@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import {createNamespace, timeFormat} from "@xuyou-element/utils";
 import type {TimeProps} from "./types";
-import {computed, onMounted, onUnmounted, ref, watch} from "vue";
+import {computed, type CSSProperties, onMounted, onUnmounted, ref, watch} from "vue";
 
 defineOptions({
   name: "xyTime",
@@ -16,7 +16,7 @@ const props = withDefaults(defineProps<TimeProps>(), {
 })
 const slots = defineSlots()
 // const hasContent = computed(() => !!slots?.default?.().length)
-const timeStyles = computed(() => {
+const timeStyles = computed<CSSProperties>(() => {
   if (!props?.timeStyle) return {}
   return {
     ...(props?.timeStyle ?? {}),

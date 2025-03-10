@@ -31,6 +31,6 @@ export interface CoverProps {
   subtitle?: string;
   titlePosition?: CoverTitlePosition;
   padding?: number;
-  coverClass?: string[];
-  coverStyle?: CSSProperties;
+  titleClass?: string[];
+  titleStyle?: CSSProperties;
 }

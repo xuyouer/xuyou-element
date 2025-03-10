@@ -35,6 +35,7 @@ $xy-opacity-base: $xy-opacity-5;
 
 
 // text
+$xy-letter-spacing-0-05: 0.05em;
 $xy-letter-spacing-40: 40px;
 $xy-letter-spacing-50: 50px;
 
@@ -70,13 +71,18 @@ $xy-background-base: linear-gradient(0deg, #FFF 0, #F3F5F8 100%);
 
 
 // width height
+$xy-width-200: 200px;
+$xy-width-100: 100px;
 $xy-width-35: 35px;
 $xy-width-20: 20px;
+$xy-height-200: 200px;
+$xy-height-100: 100px;
 $xy-height-40: 40px;
 $xy-height-35: 35px;
 $xy-height-30: 30px;
 $xy-height-25: 25px;
 $xy-height-20: 20px;
+$xy-height-15: 15px;
 
 
 // margin padding

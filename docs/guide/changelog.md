@@ -1,5 +1,41 @@
 # 变更日志
 
+## 汇总
+
+```markdown
+01. ✅ xyAvatar
+02. ✅ xyBadge
+03. ✅ xyButton
+04. ✅ xyCard
+05. ✅ xyCode
+06. ✅ xyCover
+07. 🔲 xyDice
+08. ✅ xyDivider
+09. ✅ xyIcon
+10. 🔲 xyImage
+11. ✅ xyLink
+12. ✅ xyNumeral
+13. 🔲 xyPoster
+14. ✅ xyProgress
+15. ✅ xyQrCode
+16. ✅ xyRandomText
+17. 🔲 xyRow/xyCol
+18. ✅ xySpace
+19. 🔲 xyTag
+20. ✅ xyText
+21. ✅ xyTime
+22. 🔲 xyWordCount
+    ... ...
+```
+
+## 1.0.7 - 20250311
+
+```markdown
+新增:
+
+1. xyProgress
+```
+
 ## 1.0.6 - 20250218
 
 ```markdown
@@ -40,7 +76,7 @@ TODO:
 1. xyRow/xyCol
 2. xyImage
 3. xyTag
-4. xyCircle
+4. xyProgress
 5. xyNumeral
 6. xyRandomText
 7. ... ...

@@ -23,10 +23,7 @@ const props = withDefaults(defineProps<RandomTextProps>(), {
 const slots = defineSlots()
 // const hasContent = computed(() => !!slots?.default?.().length)
 const randomTextStyles = computed(() => {
-  if (!props?.randomTextStyle) return {}
-  return {
-    ...(props?.randomTextStyle ?? {}),
-  }
+  return {}
 })
 const textContent = ref("")
 const svgRef = ref<SVGElement | null>(null)
@@ -48,26 +45,25 @@ onMounted(generate)
 watch(
   () => ({...props}),
   generate,
-  {deep: true}
+  {deep: true, immediate: true}
 )
 </script>
 
 <template>
-  <div
-    :class="[
-      bem.b(),
-      bem.is('block', block),
-      ...(randomTextClass ?? []),
-    ]"
-    :style="randomTextStyles"
-  >
-    <xy-icon v-if="intro"
-             icon="quote-left"
-             :class="[bem.b('intro'), ...(introClass ?? [])]"
-             :style="{...(introStyle ?? {})}"
+  <div :class="[bem.b(), bem.is('block', block)]" :style="randomTextStyles">
+    <slot name="intro">
+      <xy-icon
+        v-if="intro" icon="quote-left"
+        :class="[bem.b('intro'), ...(introClass ?? [])]"
+        :style="{...(introStyle ?? {})}"
+      />
+    </slot>
+    <div v-if="renderType === 'text'" :class="[bem.e('text'), ...(textClass ?? [])]" :style="{...(textStyle ?? {})}">
+      {{ textContent }}
+    </div>
+    <svg v-else-if="renderType === 'svg'" ref="svgRef" :width="svgWidth" :height="svgHeight"
+         :class="[bem.e('svg'), ...(textClass ?? [])]" :style="{...(textStyle ?? {})}"
     />
-    <div v-if="renderType === 'text'" :class="bem.e('text')">{{ textContent }}</div>
-    <svg v-else-if="renderType === 'svg'" ref="svgRef" :width="svgWidth" :height="svgHeight" :class="bem.e('svg')"/>
   </div>
 </template>
 

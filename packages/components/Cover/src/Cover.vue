@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import {createNamespace} from "@xuyou-element/utils";
 import type {CoverProps} from "./types";
-import {computed} from "vue";
+import {computed, type CSSProperties} from "vue";
 
 defineOptions({
   name: "xyCover",
@@ -19,7 +19,7 @@ const props = withDefaults(defineProps<CoverProps>(), {
 })
 const slots = defineSlots()
 const coverStyles = computed(() => {
-  if (!props?.width && !props?.height && !props?.coverStyle) return {}
+  if (!props?.width && !props?.height) return {}
   return {
     ...(props?.width ? {
       "--xy-cover-width": `${props?.width}px`,
@@ -27,12 +27,11 @@ const coverStyles = computed(() => {
     ...(props?.height ? {
       "--xy-cover-height": `${props?.height}px`,
     } : {}),
-    ...(props?.coverStyle ?? {}),
   }
 })
 const hasContent = computed(() => !!slots.default?.().length)
-const titleStyles = computed(() => {
-  if (!hasContent?.value && !props?.padding) return {}
+const titleStyles = computed<CSSProperties>(() => {
+  if (!hasContent?.value && !props?.padding && !props?.titleStyle) return {}
   let padding = Math.max(0, Math.min(20, props?.padding || 10))
   return {
     ...(hasContent?.value ? {
@@ -42,26 +41,20 @@ const titleStyles = computed(() => {
     ...(padding > 0 ? {
       padding: `${padding}px`,
     } : {}),
+    ...(props?.titleStyle ?? {}),
   }
 })
 </script>
 
 <template>
-  <div
-    :class="[
-      bem.b(),
-      bem.is('bordered', bordered),
-      bem.is('outlined', outlined),
-      ...(coverClass ?? []),
-    ]"
-    :style="coverStyles"
-  >
+  <div :class="[bem.b(), bem.is('bordered', bordered), bem.is('outlined', outlined)]" :style="coverStyles">
     <div v-if="title || subtitle"
          :class="[
            bem.b('info'),
            bem.is('mask', mask),
            bem.is('feather', feather),
-           bem.is(titlePosition, titlePosition)
+           bem.is(titlePosition, titlePosition),
+           ...(titleClass ?? []),
          ]"
          :style="titleStyles"
     >

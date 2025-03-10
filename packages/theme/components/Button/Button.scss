@@ -19,7 +19,7 @@
   padding: $xy-button-default-padding-base;
   background: white;
   transition: all .3s;
-  letter-spacing: 0.05em;
+  letter-spacing: $xy-letter-spacing-0-05;
   box-sizing: $xy-box-sizing;
   outline: none;
   overflow: hidden;

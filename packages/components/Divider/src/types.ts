@@ -1,3 +1,5 @@
+import type {CSSProperties} from "vue";
+
 export type DividerBorderStyle =
   | "none"
   | "hidden"
@@ -20,4 +22,6 @@ export interface DividerProps {
   direction?: DividerDirection;
   // 自定义分隔线内容的位置
   contentPosition?: DividerContentPosition;
+  dividerClass?: string[];
+  dividerStyle?: CSSProperties;
 }

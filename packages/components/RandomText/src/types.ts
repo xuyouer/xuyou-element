@@ -14,6 +14,6 @@ export interface RandomTextProps {
   intro?: boolean;
   introClass?: string[];
   introStyle?: CSSProperties;
-  randomTextClass?: string[];
-  randomTextStyle?: CSSProperties;
+  textClass?: string[];
+  textStyle?: CSSProperties;
 }

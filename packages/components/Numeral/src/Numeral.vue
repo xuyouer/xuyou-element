@@ -15,10 +15,7 @@ const props = withDefaults(defineProps<NumeralProps>(), {
 const slots = defineSlots()
 // const hasContent = computed(() => !!slots?.default?.().length)
 const numeralStyles = computed(() => {
-  if (!props?.numeralStyle) return {}
-  return {
-    ...(props?.numeralStyle ?? {}),
-  }
+  return {}
 })
 const displayedValue = ref<string | number | null | undefined>("")
 const formatValue = () => {
@@ -48,11 +45,11 @@ watch(displayedValue, splitValue)
 </script>
 
 <template>
-  <div :class="[bem.b(), ...(numeralClass ?? [])]" :style="numeralStyles">
+  <div :class="bem.b()" :style="numeralStyles">
     <div v-if="prefix" :class="[bem.e('prefix'), ...(prefixClass ?? [])]" :style="{...(prefixStyle ?? {})}">
       <slot name="prefix">{{ prefix }}</slot>
     </div>
-    <div :class="bem.b('value')">
+    <div :class="[bem.b('value'), ...(numeralClass ?? [])]" :style="{...(numeralStyle ?? {})}">
       <div
         :class="[
           bem.e('integer'),
