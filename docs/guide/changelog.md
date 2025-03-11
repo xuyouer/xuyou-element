@@ -1,31 +1,49 @@
 # 变更日志
 
-## 汇总
+## TOC
 
 ```markdown
-01. ✅ xyAvatar
-02. ✅ xyBadge
-03. ✅ xyButton
-04. ✅ xyCard
-05. ✅ xyCode
-06. ✅ xyCover
-07. 🔲 xyDice
-08. ✅ xyDivider
-09. ✅ xyIcon
-10. 🔲 xyImage
-11. ✅ xyLink
-12. ✅ xyNumeral
-13. 🔲 xyPoster
-14. ✅ xyProgress
-15. ✅ xyQrCode
-16. ✅ xyRandomText
-17. 🔲 xyRow/xyCol
-18. ✅ xySpace
-19. 🔲 xyTag
-20. ✅ xyText
-21. ✅ xyTime
-22. 🔲 xyWordCount
+01. ✅ Avatar
+02. ✅ Badge
+03. 🔲 BackTop
+04. ✅ Button
+05. ✅ Card
+06. 🔲 Carousel
+07. ✅ Code
+08. 🔲 Col
+09. ✅ Cover
+10. 🔲 Dice
+11. ✅ Divider
+12. 🔲 Empty
+13. 🔲 GlobalFooter
+14. ✅ Icon
+15. 🔲 Image
+16. ✅ Link
+17. ✅ Numeral
+18. 🔲 PageHeader
+19. 🔲 Pagination
+20. 🔲 Poster
+21. ✅ Progress
+22. ✅ QrCode
+23. ✅ RandomText
+24. 🔲 Result
+25. 🔲 Row
+26. ✅ Space
+27. 🔲 Steps
+28. 🔲 Tag
+29. ✅ Text
+30. ✅ Time
+31. 🔲 Timeline
+32. 🔲 WordCount
     ... ...
+```
+
+## 1.0.8 - 20250312
+
+```markdown
+更新:
+
+1. xyProgress 水波wave类型进度条
 ```
 
 ## 1.0.7 - 20250311

@@ -14,7 +14,7 @@ const meta: Meta<typeof xyProgress> = {
     },
     type: {
       control: "select",
-      options: ["line", "circle", "dashboard"],
+      options: ["line", "circle", "dashboard", "wave"],
     },
     strokeColor: {
       control: "object",
@@ -113,6 +113,25 @@ export const Dashboard: Story = {
     percent: 50,
     type: "dashboard",
     strokeColor: {stops: ["#30cfd0", "#330867"]},
+  },
+  render: (args) => ({
+    components: {xyProgress},
+    setup() {
+      return {args};
+    },
+    template: container(
+      `
+      <xy-progress data-testid="story-test-progress" v-bind="args"/>
+      `
+    ),
+  }),
+}
+
+export const Wave: Story = {
+  args: {
+    percent: 66,
+    type: "wave",
+    strokeColor: {stops: ["#fddb92", "#d1fdff"]},
   },
   render: (args) => ({
     components: {xyProgress},

@@ -38,14 +38,13 @@
       top: 50%;
       right: 0;
       transform: translateY(-50%);
-      padding-right: $xy-padding-5;
     }
     &:is(.is-outside) {
       margin-left: $xy-padding-5;
     }
   }
 
-  @include m(circle, dashboard) {
+  @include m(circle, dashboard, wave) {
     .xy-progress__indicator {
       transform: initial;
       border-radius: $xy-border-radius-circle-50;
@@ -58,6 +57,8 @@
     transform: rotate(90deg);
   }
   @include e(dashboard) {
+  }
+  @include e(wave) {
   }
 
   @include e(stroke) {

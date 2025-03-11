@@ -44,7 +44,9 @@ export default defineConfig({
         },
         {
           text: 'Chart 图表组件',
-          items: []
+          items: [
+            {text: 'Progress 进度条', link: '/components/Progress'},
+          ]
         },
         {
           text: 'Data 数据展示组件',
@@ -86,7 +88,7 @@ export default defineConfig({
 
     footer: {
       message: 'Released under the MIT License.',
-      copyright: 'Copyright © 2024-present xuyou, xiaomizha Ltd. All rights reserved.'
+      copyright: '© 2020-2025 xuyou, xiaomizha., Ltd. All rights reserved.'
     },
 
     editLink: {

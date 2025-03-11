@@ -1,7 +1,7 @@
 import type {CSSProperties} from "vue";
 
 export type ProgressStatus = "primary" | "success" | "warning" | "danger" | "info" | "default";
-export type ProgressType = "line" | "circle" | "dashboard";
+export type ProgressType = "line" | "circle" | "dashboard" | "wave";
 export type ProgressLineIndicatorPlacement = "inside" | "outside";
 
 export interface ProgressProps {
@@ -49,4 +49,6 @@ export interface ProgressProps {
   strokeStyle?: CSSProperties;
   trailClass?: string[];
   trailStyle?: CSSProperties;
+  waveClass?: string[];
+  waveStyle?: CSSProperties;
 }

@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import {createNamespace} from "@xuyou-element/utils";
+import {createNamespace, getWaveColor, WaveUtils} from "@xuyou-element/utils";
 import type {ProgressProps} from "./types";
-import {computed, type CSSProperties, ref, watch} from "vue";
+import {computed, type CSSProperties, onMounted, onUnmounted, ref, watch} from "vue";
 
 defineOptions({
   name: "xyProgress",
@@ -37,13 +37,58 @@ const progressStyles = computed(() => {
   }
 })
 const actualPercent = ref(0)
-watch(
-  () => props?.percent,
-  (newVal) => {
-    actualPercent.value = Math.max(0, Math.min(100, Number(newVal) || 0))
-  },
-  {deep: true, immediate: true}
-)
+const canvas = ref<HTMLCanvasElement | null>(null)
+let waveUtils: WaveUtils | null = null
+const initWaveUtils = () => {
+  if (props?.type === 'wave') {
+    if (!canvas.value) {
+      return
+    }
+    const ctx = canvas.value.getContext('2d')
+    if (!ctx) {
+      return
+    }
+    const waveColor = getWaveColor(
+      ctx,
+      props?.strokeColor,
+      props?.status,
+      props?.circleSize,
+    )
+    waveUtils = new WaveUtils(
+      ctx,
+      props?.circleSize,
+      waveColor,
+      props?.trailColor || '#f4f8fa',
+      props?.percent,
+    )
+    waveUtils.startAnimation()
+  }
+}
+const destroyWaveUtils = () => {
+  if (waveUtils) {
+    waveUtils.stopAnimation()
+    waveUtils = null
+  }
+}
+onMounted(() => {
+  initWaveUtils()
+})
+onUnmounted(() => {
+  destroyWaveUtils()
+})
+watch(() => props?.percent, (newPercent) => {
+  actualPercent.value = Math.max(0, Math.min(100, Number(newPercent) || 0))
+  if (props?.type === 'wave' && waveUtils) {
+    waveUtils.updateProgress(newPercent)
+  }
+}, {deep: true, immediate: true})
+watch(() => props?.type, (newType, oldType) => {
+  if (newType === 'wave') {
+    initWaveUtils()
+  } else if (oldType === 'wave') {
+    destroyWaveUtils()
+  }
+}, {deep: true, immediate: true})
 const percentStyle = computed(() => {
   if (!actualPercent.value) return {}
   return {
@@ -153,11 +198,11 @@ const indicatorStyles = computed<CSSProperties>(() => {
   <div :class="[bem.b(), bem.m(type)]" :style="progressStyles">
     <div v-if="type === 'line'" :class="[bem.e('trail'), ...(trailClass ?? [])]" :style="lineTrailStyles">
       <div :class="[bem.e('stroke'), bem.m(status), bem.is('processing', processing), ...(strokeClass ?? [])]"
-           :style="lineStrokeStyles"/>
+           :style="lineStrokeStyles"
+      />
     </div>
-    <svg v-else-if="type === 'circle' || type === 'dashboard'" v-bind="circleStyles.circle" :width="circleSize"
-         :height="circleSize"
-         :class="bem.e(type === 'circle' ? 'circle' : 'dashboard')">
+    <svg v-else-if="type === 'circle' || type === 'dashboard'" v-bind="circleStyles.circle"
+         :width="circleSize" :height="circleSize" :class="bem.e(type === 'circle' ? 'circle' : 'dashboard')">
       <defs v-if="circleStyles.gradient">
         <linearGradient :id="circleStyles.gradient.id">
           <stop
@@ -171,6 +216,11 @@ const indicatorStyles = computed<CSSProperties>(() => {
       <circle v-bind="circleStyles.trail" stroke-linecap="round" :class="[bem.e('trail'), ...(trailClass ?? [])]"/>
       <circle v-bind="circleStyles.stroke" stroke-linecap="round" :class="[bem.e('stroke'), ...(strokeClass ?? [])]"/>
     </svg>
+    <canvas v-else-if="type === 'wave'" ref="canvas"
+            :width="circleSize" :height="circleSize"
+            :class="[bem.e('wave'), ...(waveClass ?? [])]"
+            :style="{...(waveStyle ?? {})}"
+    />
     <div
       v-if="showIndicator"
       :class="[
