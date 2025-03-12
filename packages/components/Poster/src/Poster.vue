@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import {createNamespace} from "@xuyou-element/utils";
 import type {PosterProps} from "./types";
-import {computed, type CSSProperties} from "vue";
+import {computed} from "vue";
 import {xyBadge} from "../../Badge";
 import {xyCard} from "../../Card";
 import {xyCover} from "../../Cover";
@@ -19,20 +19,21 @@ const props = withDefaults(defineProps<PosterProps>(), {
 })
 const slots = defineSlots()
 // const hasContent = computed(() => !!slots.default?.().length)
-const posterStyles = computed<CSSProperties>(() => {
-  if (!props?.width && !props?.posterStyle) return {}
+const posterStyles = computed(() => {
+  if (!props?.width) return {}
   return {
     ...(props?.width ? {
       width: `${props?.width}px`,
     } : {}),
-    ...(props?.posterStyle ?? {}),
   }
 })
 </script>
 
 <template>
-  <div :class="[bem.b(), ...(posterClass ?? [])]" :style="posterStyles">
-    <xy-card block :headerStyle="{padding: 0}">
+  <div :class="bem.b()" :style="posterStyles">
+    <xy-card block :headerStyle="{padding: 0}"
+             :class="[...(posterClass ?? [])]" :style="{...(props?.posterStyle ?? {})}"
+    >
       <template #header>
         <xy-badge value="测试"
                   :badgeStyle="{background: '#F2F2F2', color: '#2F2F2F', borderRadius: '4px', top: '10px', right: 'initial', left: '10px'}"
@@ -50,7 +51,7 @@ const posterStyles = computed<CSSProperties>(() => {
         </xy-badge>
       </template>
       <xy-time format="MM月dd日"/>
-      <xy-divider direction="vertical" :dividerStyle="{height: '4.5em'}"/>
+      <xy-divider direction="vertical" :style="{height: '4.5em'}"/>
       <xy-random-text intro :style="{lineHeight: 1.5}"/>
       <template #footer>
         <xy-qr-code :bordered="false" :padding="1" :size="50" value="测试"/>

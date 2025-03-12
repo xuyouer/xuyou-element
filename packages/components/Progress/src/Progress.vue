@@ -59,7 +59,7 @@ const initWaveUtils = () => {
       props?.circleSize,
       waveColor,
       props?.trailColor || '#f4f8fa',
-      props?.percent,
+      actualPercent.value,
     )
     waveUtils.startAnimation()
   }

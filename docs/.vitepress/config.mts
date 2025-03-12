@@ -73,6 +73,7 @@ export default defineConfig({
           items: [
             {text: 'Avatar 头像', link: '/components/Avatar'},
             {text: 'Badge 徽标', link: '/components/Badge'},
+            {text: 'BarCode 条形码', link: '/components/BarCode'},
             {text: 'Code 代码', link: '/components/Code'},
             {text: 'Cover 封面', link: '/components/Cover'},
             {text: 'Poster 海报', link: '/components/Poster'},

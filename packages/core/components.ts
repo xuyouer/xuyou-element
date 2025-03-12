@@ -1,6 +1,7 @@
 import {
   xyAvatar, xyAvatarGroup,
   xyBadge,
+  xyBarCode,
   xyButton, xyButtonGroup,
   xyCard,
   xyCode,
@@ -22,6 +23,7 @@ import type {Plugin} from "vue"
 export default [
   xyAvatar, xyAvatarGroup,
   xyBadge,
+  xyBarCode,
   xyButton, xyButtonGroup,
   xyCard,
   xyCode,

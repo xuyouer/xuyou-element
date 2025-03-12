@@ -6,36 +6,45 @@
 01. ✅ Avatar
 02. ✅ Badge
 03. 🔲 BackTop
-04. ✅ Button
-05. ✅ Card
-06. 🔲 Carousel
-07. ✅ Code
-08. 🔲 Col
-09. ✅ Cover
-10. 🔲 Dice
-11. ✅ Divider
-12. 🔲 Empty
-13. 🔲 GlobalFooter
-14. ✅ Icon
-15. 🔲 Image
-16. ✅ Link
-17. ✅ Numeral
-18. 🔲 PageHeader
-19. 🔲 Pagination
-20. 🔲 Poster
-21. ✅ Progress
-22. ✅ QrCode
-23. ✅ RandomText
-24. 🔲 Result
-25. 🔲 Row
-26. ✅ Space
-27. 🔲 Steps
-28. 🔲 Tag
-29. ✅ Text
-30. ✅ Time
-31. 🔲 Timeline
-32. 🔲 WordCount
+04. ✅ BarCode
+05. ✅ Button
+06. ✅ Card
+07. 🔲 Carousel
+08. ✅ Code
+09. 🔲 Col
+10. ✅ Cover
+11. 🔲 Dice
+12. ✅ Divider
+13. 🔲 Empty
+14. 🔲 GlobalFooter
+15. ✅ Icon
+16. 🔲 Image
+17. ✅ Link
+18. ✅ Numeral
+19. 🔲 PageHeader
+20. 🔲 Pagination
+21. 🔲 Poster
+22. ✅ Progress
+23. ✅ QrCode
+24. ✅ RandomText
+25. 🔲 Result
+26. 🔲 Row
+27. ✅ Space
+28. 🔲 Steps
+29. 🔲 Tag
+30. ✅ Text
+31. ✅ Time
+32. 🔲 Timeline
+33. 🔲 WordCount
     ... ...
+```
+
+## 1.0.9 - 20250313
+
+```markdown
+新增:
+
+1. xyBarCode
 ```
 
 ## 1.0.8 - 20250312
@@ -43,7 +52,7 @@
 ```markdown
 更新:
 
-1. xyProgress 水波wave类型进度条
+1. xyProgress wave水波类型进度条
 ```
 
 ## 1.0.7 - 20250311
