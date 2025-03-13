@@ -1,0 +1,6 @@
+@use "../../mixins/index" as *;
+
+@include b(col) {
+  display: inline-flex;
+  vertical-align: middle;
+}

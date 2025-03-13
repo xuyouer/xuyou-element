@@ -7,8 +7,10 @@ import {xyCard} from "../../Card";
 import {xyCover} from "../../Cover";
 import {xyDivider} from "../../Divider";
 import {xyQrCode} from "../../QrCode";
-import {xyTime} from "../../Time";
 import {xyRandomText} from "../../RandomText";
+import {xyCol, xyRow} from "../../Row";
+import {xySpace} from "../../Space";
+import {xyNumeral} from "../../Numeral";
 
 defineOptions({
   name: "xyPoster",
@@ -50,11 +52,31 @@ const posterStyles = computed(() => {
           </xy-cover>
         </xy-badge>
       </template>
-      <xy-time format="MM月dd日"/>
-      <xy-divider direction="vertical" :style="{height: '4.5em'}"/>
-      <xy-random-text intro :style="{lineHeight: 1.5}"/>
+      <xy-row>
+        <xy-col :span="6">
+          <xy-space direction="vertical" justifyContent="center" :size="0">
+            <xy-numeral :value="new Date().getMonth()+1" suffix="月" format="00"
+                        :numeralStyle="{fontSize: '25px', marginRight: '8px', color: '#2f2f2f'}"/>
+            /
+            <xy-numeral :value="new Date().getDate()" suffix="日" format="00"
+                        :numeralStyle="{fontSize: '25px', marginRight: '8px', color: '#2f2f2f', fontWeight: 'bold'}"/>
+          </xy-space>
+        </xy-col>
+        <xy-col :span="2">
+          <xy-divider direction="vertical" :style="{height: '4.5em'}"/>
+        </xy-col>
+        <xy-col :span="16">
+          <xy-random-text intro :style="{lineHeight: 1.5}" :textStyle="{color: '#2f2f2f', fontWeight: 'bold'}"/>
+        </xy-col>
+      </xy-row>
       <template #footer>
-        <xy-qr-code :bordered="false" :padding="1" :size="50" value="测试"/>
+        <xy-space justifyContent="space-between">
+          <xy-space :block="false" :size="0" direction="vertical" alignItems="flex-start">
+            <div>测试</div>
+            <div>长按识别获取更多内容</div>
+          </xy-space>
+          <xy-qr-code :bordered="false" :padding="1" :size="50" value="测试"/>
+        </xy-space>
       </template>
     </xy-card>
   </div>

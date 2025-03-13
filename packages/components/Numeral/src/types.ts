@@ -1,6 +1,9 @@
 import type {CSSProperties} from "vue";
 
 export type NumeralFormat =
+  | "0"
+  | "00"
+  | "000"
   | "0.0"
   | "0.0[0000]"
   | "0.00"

@@ -61,6 +61,7 @@ export default defineConfig({
           items: [
             {text: 'Card 卡片', link: '/components/Card'},
             {text: 'Divider 分割线', link: '/components/Divider'},
+            {text: 'Row 栅栏', link: '/components/Row'},
             {text: 'Space 间距', link: '/components/Space'},
           ]
         },

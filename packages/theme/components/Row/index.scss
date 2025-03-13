@@ -1,0 +1,9 @@
+@use "../../mixins/index" as *;
+
+@include b(row) {
+  width: 100%;
+  display: flex;
+  vertical-align: middle;
+  flex-direction: row;
+  gap: 0;
+}
