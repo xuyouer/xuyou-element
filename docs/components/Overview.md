@@ -73,7 +73,7 @@ const componentsData = [
     <xy-badge type="primary"><template v-slot:value>{{ category.items.length }}</template></xy-badge>
   </div>
   <xy-grid :gap="10" :padding="0" square>
-    <xy-grid-item :bordered="false" :borderRadius="6" v-for="(item, itemIndex) in category.items" style="cursor: pointer;" :onClick="() => navigateToTarget(`xuyou-element${item.link}`)">
+    <xy-grid-item :bordered="false" :borderRadius="6" v-for="(item, itemIndex) in category.items" style="cursor: pointer;" :onClick="() => navigateToTarget(`/xuyou-element${item.link}`)">
       <xy-card block style="width: 100%;" :bodyStyle="{alignItems: 'center', justifyContent: 'center'}">
         <template v-slot:header>{{ item.text }}</template>
         <xy-empty :imageSize="80" :imageStyle="{width: 'initial'}"/>

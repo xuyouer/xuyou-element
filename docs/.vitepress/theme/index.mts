@@ -4,6 +4,7 @@ import '@xuyou-element/theme/index.scss'
 
 export default {
   ...DefaultTheme,
+  ignoreDeadLinks: true,
   enhanceApp({app}) {
     app.use(XuYouElement)
   }
