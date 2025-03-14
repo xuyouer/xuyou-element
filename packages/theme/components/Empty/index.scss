@@ -1,0 +1,53 @@
+@use "../../mixins/index" as *;
+
+@include b(empty) {
+  display: flex;
+  vertical-align: middle;
+  flex-flow: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+
+  @include e(icon, image, desc, extra) {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    object-fit: cover;
+  }
+  @include e(icon) {
+    padding: $xy-padding-10 0;
+  }
+  @include e(image) {
+    width: 200px;
+
+    & > .xy-empty__img {
+      width: 100%;
+      object-fit: cover;
+    }
+  }
+  @include e(desc) {
+    font-size: $xy-font-size-14;
+    color: $xy-default-color;
+  }
+  @include e(extra) {
+  }
+
+  @include m(img-tiny) {
+    width: 120px;
+  }
+  @include m(img-small) {
+    width: 150px;
+  }
+  @include m(img-large) {
+    width: 250px;
+  }
+  @include m(font-tiny) {
+    font-size: $xy-font-size-12;
+  }
+  @include m(font-small) {
+    font-size: $xy-font-size-14;
+  }
+  @include m(font-large) {
+    font-size: $xy-font-size-18;
+  }
+}

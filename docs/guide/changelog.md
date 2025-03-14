@@ -2,42 +2,53 @@
 
 ## TOC
 
+01. ✅ [Avatar/AvatarGroup](../components/Avatar)
+02. ✅ [Badge](../components/Badge)
+03. 🔲 [BackTop](../components/BackTop)
+04. ✅ [BarCode](../components/BarCode)
+05. ✅ [Button/ButtonGroup](../components/Button)
+06. ✅ [Card](../components/Card)
+07. 🔲 [Carousel](../components/Carousel)
+08. ✅ [Code](../components/Code)
+09. ✅ [Cover](../components/Cover)
+10. 🔲 [Dice](../components/Dice)
+11. ✅ [Divider](../components/Divider)
+12. ✅ [Empty](../components/Empty)
+13. 🔲 [GlobalFooter](../components/GlobalFooter)
+14. ✅ [Grid/GridItem](../components/Grid)
+15. ✅ [Icon](../components/Icon)
+16. 🔲 [Image](../components/Image)
+17. ✅ [Link](../components/Link)
+18. 🔲 [List](../components/List)
+19. ✅ [Numeral](../components/Numeral)
+20. 🔲 [PageHeader](../components/PageHeader)
+21. 🔲 [Pagination](../components/Pagination)
+22. 🔲 [Poster](../components/Poster)
+23. ✅ [Progress](../components/Progress)
+24. ✅ [QrCode](../components/QrCode)
+25. ✅ [RandomText](../components/RandomText)
+26. 🔲 [Result](../components/Result)
+27. ✅ [Row/Col](../components/Row)
+28. ✅ [Space](../components/Space)
+29. 🔲 [Steps](../components/Steps)
+30. 🔲 [Tag](../components/Tag)
+31. ✅ [Text](../components/Text)
+32. ✅ [Time](../components/Time)
+33. 🔲 [Timeline](../components/Timeline)
+34. 🔲 [WordCount](../components/WordCount)
+35. ... ...
+
+## 1.0.11 - 20250315
+
 ```markdown
-01. ✅ Avatar/AvatarGroup
-02. ✅ Badge
-03. 🔲 BackTop
-04. ✅ BarCode
-05. ✅ Button/ButtonGroup
-06. ✅ Card
-07. 🔲 Carousel
-08. ✅ Code
-09. ✅ Cover
-10. 🔲 Dice
-11. ✅ Divider
-12. 🔲 Empty
-13. 🔲 GlobalFooter
-14. 🔲 Grid
-15. ✅ Icon
-16. 🔲 Image
-17. ✅ Link
-18. 🔲 List
-19. ✅ Numeral
-20. 🔲 PageHeader
-21. 🔲 Pagination
-22. 🔲 Poster
-23. ✅ Progress
-24. ✅ QrCode
-25. ✅ RandomText
-26. 🔲 Result
-27. ✅ Row/Col
-28. ✅ Space
-29. 🔲 Steps
-30. 🔲 Tag
-31. ✅ Text
-32. ✅ Time
-33. 🔲 Timeline
-34. 🔲 WordCount
-    ... ...
+新增:
+
+1. xyGrid/xyGridItem
+2. xyEmpty
+
+更新:
+
+1. 文档 Overview 组件总览
 ```
 
 ## 1.0.10 - 20250314

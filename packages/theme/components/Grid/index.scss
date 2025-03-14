@@ -1,0 +1,38 @@
+@use "../../mixins/index" as *;
+
+@include b(grid) {
+  display: grid;
+  vertical-align: middle;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+  border: $xy-border-base;
+  border-color: transparent;
+  border-radius: $xy-border-radius-6;
+  transition: all .3s;
+
+  @include when(bordered) {
+    border-color: $xy-border-color;
+  }
+  @include when(disabled) {
+    opacity: $xy-opacity-5;
+    user-select: none;
+    cursor: not-allowed;
+    pointer-events: none;
+  }
+  @include when(center) {
+    & > .xy-grid-item {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+
+  @include m(shadow-hover) {
+    &:hover {
+      box-shadow: $xy-box-shadow-base;
+    }
+  }
+  @include m(shadow-always) {
+    box-shadow: $xy-box-shadow-base;
+  }
+}

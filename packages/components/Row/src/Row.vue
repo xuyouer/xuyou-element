@@ -24,15 +24,10 @@ const rowStyles = computed<CSSProperties>(() => {
   }
   return {...style, ...(props?.rowStyle ?? {})}
 })
-const handleClick = (event: MouseEvent) => {
-  if (props?.onClick) {
-    props?.onClick(event)
-  }
-}
 </script>
 
 <template>
-  <div :class="[bem.b(), ...(rowClass ?? [])]" :style="rowStyles" @click="handleClick">
+  <div :class="[bem.b(), ...(rowClass ?? [])]" :style="rowStyles" @click="onClick">
     <slot></slot>
   </div>
 </template>

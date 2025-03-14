@@ -62,15 +62,10 @@ const responsiveStyle = computed(() => {
   })
   return styles
 })
-const handleClick = (event: MouseEvent) => {
-  if (props?.onClick) {
-    props?.onClick(event)
-  }
-}
 </script>
 
 <template>
-  <div :class="[bem.b(), ...(colClass ?? [])]" :style="{...colStyles, ...responsiveStyle}" @click="handleClick">
+  <div :class="[bem.b(), ...(colClass ?? [])]" :style="{...colStyles, ...responsiveStyle}" @click="onClick">
     <slot></slot>
   </div>
 </template>
